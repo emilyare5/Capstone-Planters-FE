@@ -1,21 +1,49 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Routes, Route } from 'react-router-dom'
+import { Link, Routes, Route, UNSAFE_DataRouterStateContext } from 'react-router-dom'
 import '../style/index.css'
 import Inventory from './Inventory'
+import Register from './Register'
+import Login from './Login'
+import Navigations from './Navigations'
+import { useJwt } from "react-jwt";
+
 
 const App = () => {
+  const [user, setUser] = useState({ name: "", token: "", role: "" })
+  const [userRole, setUserRole] = useState("")
+  const { decodedToken, isExpired } = useJwt(user.token);
 
+  useEffect(() => {
+    let savedU = localStorage.getItem("username")
+    let savedT = localStorage.getItem("token")
+    let savedR = localStorage.getItem("role")
+    if (savedU && savedT && savedR) {
+      setUser({
+        name: savedU,
+        token: savedT,
+        role: savedR
+      })
+    }
+  }, [])
+  useEffect(() => {
+    if (decodedToken) {
+      localStorage.setItem("username", decodedToken.username)
+      localStorage.setItem("role", decodedToken.role)
+      setUser({
+        name: decodedToken.username,
+        token: user.token,
+        role: decodedToken.role
+      })
+    }
+  }, [decodedToken])
 
   return (
     <div>
-
-      <div>
-        <Link to="/"> <button>Home</button> </Link>
-      </div>
-
-
+      <Navigations {...user} setUser={setUser} />
       <Routes>
-        <Route path="/" element={<Inventory/>} />
+        <Route path="/login" element={<Login {...user} setUser={setUser} decodedToken={decodedToken} useJwt={useJwt} />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Inventory />} />
       </Routes>
     </div>
   )
