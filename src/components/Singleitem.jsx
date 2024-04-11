@@ -19,7 +19,7 @@ export default function Singleitem(){
         single()
     },[])
 
-    console.log(singleData)
+    // console.log(singleData)
 
     return(
         <div>
@@ -27,12 +27,12 @@ export default function Singleitem(){
                 <div>
                     <h2>More Infomation!</h2>
                     <h2>{singleData.name}</h2>
-                    <p>Id: {singleData.id}</p>
-                    <p>Type Id: {singleData.type_id}</p>
+                    {/* <p>Id: {singleData.id}</p> */}
+                    {/* <p>Type Id: {singleData.type_id}</p> */}
                     {/* <img src={singleData.imageUrl}/> */}
                     <p>Description: {singleData.description}</p>
                     <p>Price: ${singleData.price}</p>
-                    <p>Quantity: {singleData.quantity}</p>
+                    {/* <p>Quantity: {singleData.quantity}</p> */}
                 </div>
             ) : (
                 <p>Loading...</p>
