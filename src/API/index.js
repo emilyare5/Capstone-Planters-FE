@@ -67,3 +67,16 @@ export async function loginCustomer(loginObj) {
 
     }
 }
+
+// single info
+export async function getSingleInventory(itemID) {
+    try {
+        const response = await fetch(APIURL + "/inventory/" + itemID)
+        const result = await response.json()
+        // console.log(result)
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}

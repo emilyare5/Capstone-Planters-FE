@@ -6,6 +6,7 @@ import Register from './Register'
 import Login from './Login'
 import Navigations from './Navigations'
 import { useJwt } from "react-jwt";
+import Singleitem from './Singleitem'
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/login" element={<Login {...user} setUser={setUser} decodedToken={decodedToken} useJwt={useJwt} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
+        <Route path="/single/:itemId" element={<Singleitem/>} />
       </Routes>
     </div>
   )
