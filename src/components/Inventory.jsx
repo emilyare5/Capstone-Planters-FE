@@ -27,8 +27,8 @@ export default function Inventory() {
             return <div key={item.id}>
 
                 <div>
-                    <p>{item.name}</p>
-                    <Link to={`/single/${item.id}`}> <button>More Infomation!</button></Link>
+                    {/* <p>{item.name}</p> */}
+                    <Link to={`/single/${item.id}`}> {item.name} </Link>
                 </div>
             </div>
            })}
