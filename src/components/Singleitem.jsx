@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import { getSingleInventory } from '../API';
+import { AddCartItem, getSingleInventory } from '../API';
 
 export default function Singleitem(){
 
     const [singleData, setSingleData] = useState(null);
+    const [newItemAdded, SetNewItemtoCart] = useState(null);
 
     let {itemId} = useParams()
 
@@ -20,11 +21,12 @@ export default function Singleitem(){
     },[])
 
     // console.log(singleData)
-
+    // ........................(token)
     async function addToCart({id, }){
 
         try{
-            
+            const Add = await AddCartItem({id, })
+            SetNewItemtoCart(Add)
         }catch(error){
             console.error(error)
         }
