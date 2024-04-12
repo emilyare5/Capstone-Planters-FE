@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { AddCartItem, getSingleInventory } from '../API';
 
-export default function Singleitem(){
+// ...................................(token)
+export default function Singleitem({SetNewItemtoCart}){
 
     const [singleData, setSingleData] = useState(null);
-    const [newItemAdded, SetNewItemtoCart] = useState(null);
+    
 
     let {itemId} = useParams()
 

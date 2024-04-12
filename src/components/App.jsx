@@ -14,6 +14,8 @@ const App = () => {
   const [userRole, setUserRole] = useState("")
   const { decodedToken, isExpired } = useJwt(user.token);
 
+  const [newItemAdded, SetNewItemtoCart] = useState(null);
+
   useEffect(() => {
     let savedU = localStorage.getItem("username")
     let savedT = localStorage.getItem("token")
@@ -45,7 +47,7 @@ const App = () => {
         <Route path="/login" element={<Login {...user} setUser={setUser} decodedToken={decodedToken} useJwt={useJwt} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
-        <Route path="/single/:itemId" element={<Singleitem/>} />
+        <Route path="/single/:itemId" element={<Singleitem SetNewItemtoCart={SetNewItemtoCart}/>} />
       </Routes>
     </div>
   )
