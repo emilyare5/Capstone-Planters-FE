@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { AddCartItem, getSingleInventory } from '../API';
 
 // ...................................(token)
-export default function Singleitem({SetNewItemtoCart}){
+export default function Singleitem({SetNewItemtoCart,token}){
 
     const [singleData, setSingleData] = useState(null);
     
@@ -23,10 +23,10 @@ export default function Singleitem({SetNewItemtoCart}){
 
     // console.log(singleData)
     // ........................(token)
-    async function addToCart({id, }){
+    async function addToCart({id,token}){
 
         try{
-            const Add = await AddCartItem({id, })
+            const Add = await AddCartItem({id,token})
             SetNewItemtoCart(Add)
         }catch(error){
             console.error(error)
@@ -52,7 +52,7 @@ export default function Singleitem({SetNewItemtoCart}){
             {/* button...need to pass an object.. that trigger the patch cart endpoint... */}
             {/* item id and quantity */}
 
-           <button onClick={() => addToCart(singleData.id) }></button>
+           <button onClick={() => addToCart(singleData.id, token) }></button>
         </div>
 
     )

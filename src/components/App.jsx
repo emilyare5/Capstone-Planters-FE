@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/login" element={<Login {...user} setUser={setUser} decodedToken={decodedToken} useJwt={useJwt} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
-        <Route path="/single/:itemId" element={<Singleitem SetNewItemtoCart={SetNewItemtoCart}/>} />
+        <Route path="/single/:itemId" element={<Singleitem SetNewItemtoCart={SetNewItemtoCart} {...user} />} />
       </Routes>
     </div>
   )
