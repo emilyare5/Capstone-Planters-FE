@@ -52,7 +52,7 @@ export default function Singleitem({SetNewItemtoCart,token}){
             {/* button...need to pass an object.. that trigger the patch cart endpoint... */}
             {/* item id and quantity */}
 
-           <button onClick={() => addToCart(singleData.id, token) }></button>
+           <button onClick={() => addToCart(singleData.id, token) }>Add To Cart</button>
         </div>
 
     )
