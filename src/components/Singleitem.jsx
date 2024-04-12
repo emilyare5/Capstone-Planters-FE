@@ -21,6 +21,15 @@ export default function Singleitem(){
 
     // console.log(singleData)
 
+    async function addToCart({id, }){
+
+        try{
+            
+        }catch(error){
+            console.error(error)
+        }
+    }
+
     return(
         <div>
            {singleData ? (
@@ -37,6 +46,10 @@ export default function Singleitem(){
             ) : (
                 <p>Loading...</p>
             )}
+            {/* button...need to pass an object.. that trigger the patch cart endpoint... */}
+            {/* item id and quantity */}
+
+           <button onClick={() => addToCart(singleData.id) }></button>
         </div>
 
     )
