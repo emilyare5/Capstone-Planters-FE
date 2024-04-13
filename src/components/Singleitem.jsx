@@ -51,7 +51,7 @@ export default function Singleitem({ SetNewItemtoCart, token }) {
                     <h2>{singleData.name}</h2>
                     {/* <img src={singleData.imageUrl}/> */}
                     <p>Description: {singleData.description}</p>
-                    <p>Price: ${singleData.price}</p>
+                    <p>Price: ${(singleData.price / 100).toFixed(2)}</p>
 
                     <label>
                         Quantity:
