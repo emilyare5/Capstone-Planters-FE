@@ -38,10 +38,6 @@ export default function Singleitem({ SetNewItemtoCart, token }) {
         };
     };
 
-    // function currencyFormat(num) {
-    //     return '$' + num.toFixed(1).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    //  }
-    // console.log(currencyFormat(500));
 
     return (
         <div>
