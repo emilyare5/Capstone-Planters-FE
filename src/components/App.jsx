@@ -6,12 +6,16 @@ import Register from './Register'
 import Login from './Login'
 import Navigations from './Navigations'
 import { useJwt } from "react-jwt";
+import Singleitem from './Singleitem'
 
 
 const App = () => {
   const [user, setUser] = useState({ name: "", token: "", role: "" })
   const [userRole, setUserRole] = useState("")
   const { decodedToken, isExpired } = useJwt(user.token);
+
+  const [newItemAdded, SetNewItemtoCart] = useState(null);
+  
 
   useEffect(() => {
     let savedU = localStorage.getItem("username")
@@ -37,6 +41,7 @@ const App = () => {
     }
   }, [decodedToken])
 
+
   return (
     <div>
       <Navigations {...user} setUser={setUser} />
@@ -44,6 +49,7 @@ const App = () => {
         <Route path="/login" element={<Login {...user} setUser={setUser} decodedToken={decodedToken} useJwt={useJwt} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
+        <Route path="/single/:itemId" element={<Singleitem SetNewItemtoCart={SetNewItemtoCart} {...user} />} />
       </Routes>
     </div>
   )

@@ -6,7 +6,7 @@ export async function getAllInventory() {
     try {
         const response = await fetch(APIURL + "/inventory")
         const result = await response.json()
-        console.log(result)
+        // console.log(result)
         return result
 
     } catch (error) {
@@ -65,5 +65,45 @@ export async function loginCustomer(loginObj) {
     } catch (error) {
         console.error(error);
 
+    }
+}
+
+// single info
+export async function getSingleInventory(itemID) {
+    try {
+        const response = await fetch(APIURL + "/inventory/" + itemID)
+        const result = await response.json()
+        // console.log(result)
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+// add to cart           
+export async function AddCartItem(itemID,token, quantity){
+    
+    try{
+        
+        const response = await fetch(APIURL + "/carts/mycart/update",
+            {
+                method: "PATCH",
+                headers:{
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                     inventory_id:itemID,
+                     quantity:quantity,
+                })
+
+            })
+        const result = await response.json()
+        console.log('Item added to cart:', result);
+        return result
+
+    }catch(error){
+        console.error(error)
     }
 }
