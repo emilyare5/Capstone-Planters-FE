@@ -82,7 +82,7 @@ export async function getSingleInventory(itemID) {
 }
 
 // add to cart           
-export async function AddCartItem(itemID,token){
+export async function AddCartItem(itemID,token, quantity){
     
     try{
         
@@ -95,7 +95,7 @@ export async function AddCartItem(itemID,token){
                 },
                 body: JSON.stringify({
                      inventory_id:itemID,
-                     quantity:1,
+                     quantity:quantity,
                 })
 
             })

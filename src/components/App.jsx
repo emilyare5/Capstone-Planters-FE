@@ -15,6 +15,7 @@ const App = () => {
   const { decodedToken, isExpired } = useJwt(user.token);
 
   const [newItemAdded, SetNewItemtoCart] = useState(null);
+  
 
   useEffect(() => {
     let savedU = localStorage.getItem("username")
