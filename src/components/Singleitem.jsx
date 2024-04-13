@@ -5,6 +5,8 @@ import { AddCartItem, getSingleInventory } from '../API';
 // ...................................(token)
 export default function Singleitem({SetNewItemtoCart,token}){
 
+    
+
     const [singleData, setSingleData] = useState(null);
     
 
@@ -21,12 +23,11 @@ export default function Singleitem({SetNewItemtoCart,token}){
         single()
     },[])
 
-    // console.log(singleData)
-    // ........................(token)
-    async function addToCart({id,token}){
+   
+    async function addToCart(id,token){
 
         try{
-            const Add = await AddCartItem({id,token})
+            const Add = await AddCartItem(id,token)
             SetNewItemtoCart(Add)
         }catch(error){
             console.error(error)
@@ -39,20 +40,17 @@ export default function Singleitem({SetNewItemtoCart,token}){
                 <div>
                     <h2>More Infomation!</h2>
                     <h2>{singleData.name}</h2>
-                    {/* <p>Id: {singleData.id}</p> */}
-                    {/* <p>Type Id: {singleData.type_id}</p> */}
                     {/* <img src={singleData.imageUrl}/> */}
                     <p>Description: {singleData.description}</p>
                     <p>Price: ${singleData.price}</p>
-                    {/* <p>Quantity: {singleData.quantity}</p> */}
+                   
+                    <button onClick={() => addToCart(singleData.id, token) }>Add To Cart</button>
                 </div>
             ) : (
                 <p>Loading...</p>
             )}
-            {/* button...need to pass an object.. that trigger the patch cart endpoint... */}
-            {/* item id and quantity */}
+            
 
-           <button onClick={() => addToCart(singleData.id, token) }>Add To Cart</button>
         </div>
 
     )

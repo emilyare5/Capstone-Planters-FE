@@ -85,20 +85,22 @@ export async function getSingleInventory(itemID) {
 export async function AddCartItem(itemID,token){
     
     try{
-        const response = await fetch(APIURL + "/mycart/update",
+        
+        const response = await fetch(APIURL + "/carts/mycart/update",
             {
                 method: "PATCH",
                 headers:{
-                    "content-Type": "application/json",
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                      inventory_id:itemID,
-                     quantity:"1000"
+                     quantity:1,
                 })
 
             })
         const result = await response.json()
+        console.log('Item added to cart:', result);
         return result
 
     }catch(error){

@@ -40,6 +40,7 @@ const App = () => {
     }
   }, [decodedToken])
 
+
   return (
     <div>
       <Navigations {...user} setUser={setUser} />
