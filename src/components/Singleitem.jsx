@@ -14,7 +14,7 @@ export default function Singleitem({ SetNewItemtoCart, token }) {
 
     const [showAlert, setShowAlert] = useState(false);
 
-
+    const [addedToCartt, setAddedToCartt] = useState(false);
 
 
     useEffect(() => {
@@ -35,13 +35,15 @@ export default function Singleitem({ SetNewItemtoCart, token }) {
             const Add = await AddCartItem(id, token, quantity);
             SetNewItemtoCart(Add);
             setShowAlert(true);
+            setAddedToCartt(true);
         } catch (error) {
             console.error(error);
         };
     };
 
     const handleQuantityChange = (event) => {
-        setQuantity(event.target.value);
+        setQuantity(parseInt(event.target.value));
+
     };
 
     useEffect(() => {
@@ -50,6 +52,7 @@ export default function Singleitem({ SetNewItemtoCart, token }) {
 
             setTimeout(() => {
                 setShowAlert(false);
+                setAddedToCartt(false);
             }, 3000)
         }
 
@@ -67,7 +70,7 @@ export default function Singleitem({ SetNewItemtoCart, token }) {
                     <p>Description: {singleData.description}</p>
                     <p>Price: ${(singleData.price / 100).toFixed(2)}</p>
 
-                    {token &&
+                    {token && !addedToCartt && (
                         <label>
                             Quantity:
                             <input
@@ -77,16 +80,16 @@ export default function Singleitem({ SetNewItemtoCart, token }) {
                                 min="1"
                             />
                         </label>
-                    }
+                    )}
 
                     <div>
                         {quantity === 1 ? showAlert && <div> <p>Added {quantity} {singleData.name} To Cart!</p></div> :
                             showAlert && <div> <p>Added {quantity} {singleData.name}s To Cart!</p></div>}
                     </div>
 
-                    {token &&
+                    {token && !addedToCartt && (
                         <button onClick={() => addToCart(singleData.id, token, quantity)} >Add To Cart</button>
-                    }
+                    )}
                 </div>
             ) : (
                 <p>Loading...</p>
