@@ -100,7 +100,7 @@ export async function AddCartItem(itemID,token, quantity){
 
             })
         const result = await response.json()
-        console.log('Item added to cart:', result);
+        // console.log('Item added to cart:', result);
         return result
 
     }catch(error){
