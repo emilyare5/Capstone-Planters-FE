@@ -4,3 +4,22 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+.forms{
+  width: 50%;
+}
+.custForms{
+  display: flex;
+}
+
+.pwField{
+  display: flex;
+}
+
+.table{
+  width: 80%;
+}
+
+.cartTables{
+  width: 40%;
+}
