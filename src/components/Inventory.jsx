@@ -5,7 +5,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 export default function Inventory() {
 
-    const imgAddr= '../src/assets2/'
+    const imgAddr= '../src/assets/assets2/'
 
     const [inventory, setInventory] = useState(null);
 
