@@ -14,6 +14,136 @@ export async function getAllInventory() {
     }
 }
 
+export async function getAllInvTypes() {
+    try {
+        const response = await fetch(APIURL + "/inventory/types",{
+            credentials: 'include'
+        })
+        const result = await response.json()
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function getSingleInventory(itemID) {
+    try {
+        const response = await fetch(APIURL + "/inventory/" + itemID)
+        const result = await response.json()
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
+// add to cart           
+export async function AddCartItem(itemID,token, quantity){
+    
+    try{
+        
+        const response = await fetch(APIURL + "/carts/mycart/update",
+            {
+                method: "PATCH",
+                headers:{
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                     inventory_id:itemID,
+                     quantity:quantity,
+                })
+
+            })
+        const result = await response.json()
+        return result
+
+    }catch(error){
+        console.error(error)
+    }
+}
+
+export async function addInventoryItem(invObj) {
+    try {
+        const response = await fetch(APIURL + '/inventory', {
+            method: "POST",
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(invObj)
+        })
+
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error);
+
+    }
+}
+
+export async function updateInventoryItem(invObj, invId) {
+    try {
+        const response = await fetch(APIURL + '/inventory/'+invId, {
+            method: "PUT",
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(invObj)
+        })
+
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error);
+
+    }
+}
+
+export async function getAllCustomers() {
+    try {
+        const response = await fetch(APIURL + "/customers", {
+            credentials: 'include'
+        })
+        const result = await response.json()
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function getCustomerById(custId) {
+    try {
+        const response = await fetch(APIURL + "/customers/"+custId, {
+            headers: {
+                credentials: 'include'
+            }
+        })
+        const result = await response.json()
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function getCartByCustId(custId) {
+    try {
+        const response = await fetch(APIURL + "/carts/customer/"+custId, {
+            credentials: 'include',
+        })
+        const result = await response.json()
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export async function registerNewUser(customer, address) {
     try {
         const response = await fetch(APIURL + '/customers/register', {
@@ -47,16 +177,40 @@ export async function registerNewUser(customer, address) {
     }
 }
 
-export async function loginCustomer(loginObj) {
+export async function updateCustomer(customer, custId) {
+    console.log(customer)
     try {
-        const response = await fetch(APIURL + '/customers/login', {
-            method: "POST",
+        const response = await fetch(APIURL + '/customers/'+custId, {
+            method: "PATCH",
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(customer)
+        })
+
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error);
+
+    }
+}
+
+export async function updateAddress(address, custId) {
+    try {
+        const response = await fetch(APIURL + '/customers/'+custId+'/address', {
+            method: "PATCH",
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                username: loginObj.username,
-                password: loginObj.password
+                    street_number: address.street_number,
+                    street: address.street,
+                    city: address.city,
+                    state: address.state,
+                    zip: address.zip,
             })
         })
 
@@ -68,42 +222,52 @@ export async function loginCustomer(loginObj) {
     }
 }
 
-// single info
-export async function getSingleInventory(itemID) {
+export async function loginCustomer(loginObj) {
     try {
-        const response = await fetch(APIURL + "/inventory/" + itemID)
-        const result = await response.json()
-        // console.log(result)
-        return result
+        const response = await fetch(APIURL + '/customers/login', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: loginObj.username,
+                password: loginObj.password
+            }),
+            credentials: 'include'
+        })
 
+        const result = await response.json()
+        return result
     } catch (error) {
-        console.error(error)
+        console.error(error);
+
     }
 }
 
-// add to cart           
-export async function AddCartItem(itemID,token, quantity){
-    
-    try{
-        
-        const response = await fetch(APIURL + "/carts/mycart/update",
-            {
-                method: "PATCH",
-                headers:{
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                     inventory_id:itemID,
-                     quantity:quantity,
-                })
-
-            })
+export async function logoutCustomer() {
+    try {
+        const response = await fetch(APIURL + '/customers/logout', {
+            method: "POST",
+            credentials: 'include'
+        })
+        console.log(response)
         const result = await response.json()
-        // console.log('Item added to cart:', result);
+        return result
+    } catch (error) {
+        console.error(error);
+
+    }
+}
+
+export async function getUserAccess() {
+    try {
+        const response = await fetch(APIURL + "/auth",{
+            credentials: 'include'
+        })
+        const result = await response.json()
         return result
 
-    }catch(error){
+    } catch (error) {
         console.error(error)
     }
 }
