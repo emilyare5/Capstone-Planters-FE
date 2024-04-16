@@ -5,6 +5,7 @@ import '../style/index.css'
 import Inventory from './Inventory'
 import Register from './Register'
 import Login from './Login'
+import Singleitem from './Singleitem';
 import AdminCust from './admin/AdminCust'
 import AdminInv from './admin/AdminInv'
 import AdminCustEdit from './admin/AdminCustEdit';
@@ -14,8 +15,9 @@ import Navibar from './Navbar'
 
 
 const App = () => {
+  const [newItemAdded, SetNewItemtoCart] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  
+
   return (
     <div>
       <Navibar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
+        <Route path="/single/:itemId" element={<Singleitem  SetNewItemtoCart={SetNewItemtoCart} />} />
         <Route path="/admin/customers/" element={<AdminCust />} />
         <Route path="/admin/customers/:custId" element={<AdminCustEdit />} />
         <Route path="/admin/customers/:custId/cart" element={<AdminCustCart />} />

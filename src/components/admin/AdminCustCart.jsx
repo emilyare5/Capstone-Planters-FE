@@ -84,7 +84,7 @@ export default function AdminCustCart() {
                                 {cartItems && cartItems.map(item => {
                                     return (
                                 
-                                        <Table striped bordered hover className="smallTables">
+                                        <Table key={item.id} striped bordered hover className="smallTables">
                                             <tbody>
                                                 <tr >
                                                     <th>Column</th>

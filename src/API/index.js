@@ -4,9 +4,10 @@ const APIURL = process.env.APIURL || 'http://localhost:3000/api'
 // get all inventory
 export async function getAllInventory() {
     try {
-        const response = await fetch(APIURL + "/inventory")
+        const response = await fetch(APIURL + "/inventory",{
+            credentials: 'include'
+        })
         const result = await response.json()
-        // console.log(result)
         return result
 
     } catch (error) {
@@ -40,16 +41,14 @@ export async function getSingleInventory(itemID) {
 
 
 // add to cart           
-export async function AddCartItem(itemID,token, quantity){
-    
+export async function AddCartItem(itemID, quantity){
     try{
-        
         const response = await fetch(APIURL + "/carts/mycart/update",
             {
+                credentials: 'include',
                 method: "PATCH",
                 headers:{
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                      inventory_id:itemID,
