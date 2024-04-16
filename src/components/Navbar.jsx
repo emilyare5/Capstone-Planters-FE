@@ -32,7 +32,7 @@ export default function Navibar({isLoggedIn}) {
 
     async function logOut() {
         logoutCustomer()
-        cookies.set("isLoggedIn", false)
+        cookies.remove("isLoggedIn", false)
         window.location.reload();
     }
 
