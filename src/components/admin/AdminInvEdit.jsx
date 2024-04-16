@@ -113,6 +113,11 @@ export default function AdminInvEdit() {
 
     return (
         <div>
+            <br />
+            <br />
+            <h2>Edit Item</h2>
+            <br />
+            <br />
             {inv ? <h2>Item Details for - {inv.name}</h2> : <h2>Item Details for ... </h2>}
             <br />
             <br />

@@ -50,6 +50,11 @@ export default function AdminCustCart() {
     
     return (
         <div>
+            <br />
+            <br />
+            <h2>Customer Cart</h2>
+            <br />
+            <br />
             {custCart ? (
                 <div >
                     <h3>Cart ID: {custCart.id}</h3>

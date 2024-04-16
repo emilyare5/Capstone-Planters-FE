@@ -46,6 +46,11 @@ export default function AdminCust() {
 
     return (
         <div>
+            <br />
+            <br />
+            <h2>View and Update Customer Data</h2>
+            <br />
+            <br />
             <Table striped bordered hover className="tables">
                 <tbody>
                     <tr>

@@ -103,7 +103,9 @@ export default function Inventory() {
 
     return (
         <div>
-            <h1>View and Update Store Inventory</h1>
+            <br />
+            <br />
+            <h2>View and Update Inventory Data</h2>
             <br />
             <br />
             <div className="forms">

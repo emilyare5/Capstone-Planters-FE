@@ -323,7 +323,11 @@ export default function AdminCustEdit() {
 
     return (
         <div>
-            
+            <br />
+            <br />
+            <h2>Customer Edit</h2>
+            <br />
+            <br />
             <div className="forms" >
                 <div className="custForms">
                 <Accordion >
