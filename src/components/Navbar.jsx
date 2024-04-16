@@ -5,9 +5,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button';
+import Cookies from 'universal-cookie';
 import { logoutCustomer, getUserAccess } from '../API';
 
 export default function Navibar({isLoggedIn}) {
+    const cookies = new Cookies();
     const [userAccess, setUserAccess] = useState({
         custId: "",
         username: "",
@@ -30,6 +32,7 @@ export default function Navibar({isLoggedIn}) {
 
     async function logOut() {
         logoutCustomer()
+        cookies.set("isLoggedIn", false)
         window.location.reload();
     }
 
@@ -46,7 +49,7 @@ export default function Navibar({isLoggedIn}) {
     function LoggedInNavs() {
         return (
             <>
-                <NavDropdown title={userAccess.username} id="basic-nav-dropdown">
+                    <NavDropdown title={userAccess.username} id="basic-nav-dropdown">
                     <Nav.Item>
                         <Button onClick={logOut} variant="secondary" size="sm">Log Out</Button>
                     </Nav.Item>

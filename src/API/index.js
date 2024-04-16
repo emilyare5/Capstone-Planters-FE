@@ -249,7 +249,7 @@ export async function logoutCustomer() {
             method: "POST",
             credentials: 'include'
         })
-        console.log(response)
+        // console.log(response)
         const result = await response.json()
         return result
     } catch (error) {
