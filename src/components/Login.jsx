@@ -65,11 +65,5 @@ export default function Login({isLoggedIn, setIsLoggedIn}) {
                 </Button>
             </Form>
         </div >
-
-
-
-
-
-
     );
 }

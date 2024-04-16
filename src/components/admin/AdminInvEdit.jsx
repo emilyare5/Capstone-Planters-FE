@@ -124,11 +124,11 @@ export default function AdminInvEdit() {
                                 <Form onSubmit={handleSubmitEditInv} >
                                     <Form.Group className="mb-3" controlId="regType">
                                         {types &&
-                                            <Form.Select aria-label="Select Item Type">
+                                            <Form.Select  value={typeId} onChange={e => setTypeId(e.target.value)} aria-label="Select Item Type">
                                                 {
                                                     types.map(type => {
                                                         return (
-                                                            <option key={type.id} value={type.id}>{type.type}</option>
+                                                            <option key={type.id} value={type.id} onChange={e => setTypeId(e.target.value)} >{type.type}</option>
                                                         )
                                                     })
                                                 }

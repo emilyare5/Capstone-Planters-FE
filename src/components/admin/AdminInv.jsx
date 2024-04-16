@@ -40,11 +40,10 @@ export default function Inventory() {
         }
         getUserAuth()
     }, [])
-
-        useEffect(() => { 
-            if (cookies.get("isLoggedIn") == false ||cookies.get("isLoggedIn")==null)  { navigate("/login") }
-            if (userAccess.role && userAccess.role != "admin") { navigate("/login") }
-        }, [])
+    useEffect(() => { 
+        if (cookies.get("isLoggedIn") == false ||cookies.get("isLoggedIn")==null)   { navigate("/login") }
+        if (userAccess.role && userAccess.role != "admin") { navigate("/login") }
+    }, [])
 
 
     useEffect(() => {
