@@ -6,6 +6,7 @@ import Inventory from './Inventory'
 import Register from './Register'
 import Login from './Login'
 import Singleitem from './Singleitem';
+import Cart from './Cart';
 import AdminCust from './admin/AdminCust'
 import AdminInv from './admin/AdminInv'
 import AdminCustEdit from './admin/AdminCustEdit';
@@ -25,12 +26,14 @@ const App = () => {
         <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
+        <Route path="/mycart" element={<Cart />} />
         <Route path="/single/:itemId" element={<Singleitem  SetNewItemtoCart={SetNewItemtoCart} />} />
         <Route path="/admin/customers/" element={<AdminCust />} />
         <Route path="/admin/customers/:custId" element={<AdminCustEdit />} />
         <Route path="/admin/customers/:custId/cart" element={<AdminCustCart />} />
         <Route path="/admin/inventory/" element={<AdminInv />} />
         <Route path="/admin/inventory/:invId" element={<AdminInvEdit />} />
+
       </Routes>
     </div>
   )
