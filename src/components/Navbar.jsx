@@ -53,7 +53,7 @@ export default function Navibar({isLoggedIn}) {
                     <Nav.Item>
                         <Button onClick={logOut} variant="secondary" size="sm">Log Out</Button>
                     </Nav.Item>
-                    <NavDropdown.Item href="#cart">My Cart</NavDropdown.Item>
+                    <NavDropdown.Item href="/mycart">My Cart</NavDropdown.Item>
                     <NavDropdown.Item href="#cart">My Account</NavDropdown.Item>
                     <NavDropdown.Divider />
                     {

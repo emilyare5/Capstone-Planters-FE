@@ -51,8 +51,8 @@ export async function AddCartItem(itemID, quantity){
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                     inventory_id:itemID,
-                     quantity:quantity,
+                     inventory_id: itemID,
+                     quantity: quantity,
                 })
 
             })
