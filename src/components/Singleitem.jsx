@@ -122,7 +122,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
                     )}
 
                     {cookies.get("isLoggedIn") && showButton && (
-                        <Button variant="info"> <Link to={"/mycart"}> Go to Cart</Link> </Button>
+                        <Button className="addToCartButt" variant="outline-info"> <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link> </Button>
                     )}
                 </div>
             ) : (

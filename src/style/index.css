@@ -23,3 +23,11 @@ body {
 .cartTables{
   width: 40%;
 }
+
+.addToCartLinkButt{
+  color: #040404;
+}
+
+.addToCartButt{
+  background-color: rgb(116, 216, 238);
+}
