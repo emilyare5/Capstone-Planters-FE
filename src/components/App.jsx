@@ -1,55 +1,39 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Routes, Route, UNSAFE_DataRouterStateContext } from 'react-router-dom'
+import { Link, Routes, Route } from 'react-router-dom'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/index.css'
 import Inventory from './Inventory'
 import Register from './Register'
 import Login from './Login'
-import Navigations from './Navigations'
-import { useJwt } from "react-jwt";
-import Singleitem from './Singleitem'
+import Singleitem from './Singleitem';
+import Cart from './Cart';
+import AdminCust from './admin/AdminCust'
+import AdminInv from './admin/AdminInv'
+import AdminCustEdit from './admin/AdminCustEdit';
+import AdminCustCart from './admin/AdminCustCart'
+import AdminInvEdit from './admin/AdminInvEdit'
+import Navibar from './Navbar'
 
 
 const App = () => {
-  const [user, setUser] = useState({ name: "", token: "", role: "" })
-  const [userRole, setUserRole] = useState("")
-  const { decodedToken, isExpired } = useJwt(user.token);
-
   const [newItemAdded, SetNewItemtoCart] = useState(null);
-  
-
-  useEffect(() => {
-    let savedU = localStorage.getItem("username")
-    let savedT = localStorage.getItem("token")
-    let savedR = localStorage.getItem("role")
-    if (savedU && savedT && savedR) {
-      setUser({
-        name: savedU,
-        token: savedT,
-        role: savedR
-      })
-    }
-  }, [])
-  useEffect(() => {
-    if (decodedToken) {
-      localStorage.setItem("username", decodedToken.username)
-      localStorage.setItem("role", decodedToken.role)
-      setUser({
-        name: decodedToken.username,
-        token: user.token,
-        role: decodedToken.role
-      })
-    }
-  }, [decodedToken])
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   return (
     <div>
-      <Navigations {...user} setUser={setUser} />
+      <Navibar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Routes>
-        <Route path="/login" element={<Login {...user} setUser={setUser} decodedToken={decodedToken} useJwt={useJwt} />} />
+        <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
-        <Route path="/single/:itemId" element={<Singleitem SetNewItemtoCart={SetNewItemtoCart} {...user} />} />
+        <Route path="/mycart" element={<Cart />} />
+        <Route path="/single/:itemId" element={<Singleitem  SetNewItemtoCart={SetNewItemtoCart} />} />
+        <Route path="/admin/customers/" element={<AdminCust />} />
+        <Route path="/admin/customers/:custId" element={<AdminCustEdit />} />
+        <Route path="/admin/customers/:custId/cart" element={<AdminCustCart />} />
+        <Route path="/admin/inventory/" element={<AdminInv />} />
+        <Route path="/admin/inventory/:invId" element={<AdminInvEdit />} />
+
       </Routes>
     </div>
   )
