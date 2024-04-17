@@ -33,7 +33,7 @@ export default function Inventory() {
                 </div>
                 <div>
                     <img src={imgAddr+item.imgurl} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
-                    <p>Price: ${(item.price / 100).toFixed(2)}</p>
+                    <p>Price: {(item.price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
                  </div>
                  
             </div>
