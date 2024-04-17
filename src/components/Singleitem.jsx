@@ -1,33 +1,48 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getUserAccess, AddCartItem, getSingleInventory } from '../API';
 import Cookies from 'universal-cookie';
+import Button from 'react-bootstrap/Button';
 
 export default function Singleitem({ SetNewItemtoCart }) {
+
     const cookies = new Cookies();
+
     const [singleData, setSingleData] = useState(null);
     let { itemId } = useParams();
+
     const [quantity, setQuantity] = useState(1);
+
     const [showAlert, setShowAlert] = useState(false);
+
     const [addedToCartt, setAddedToCartt] = useState(false);
+
     const [userAccess, setUserAccess] = useState({
         custId: "",
         username: "",
         role: "",
-        isAdmin: ""});
+        isAdmin: ""
+    });
+
+    const [showButton, setShowButton] = useState(false)
 
 
-        useEffect(() => {
-            async function getUserAuth() {
-                const user = await getUserAccess()
-                setUserAccess({
+
+
+    useEffect(() => {
+        async function getUserAuth() {
+
+            const user = await getUserAccess()
+            setUserAccess({
                 custId: user.custId,
                 username: user.username,
                 role: user.role,
-                isAdmin: user.isAdmin})
-            }
-            getUserAuth()
-        }, [])
+                isAdmin: user.isAdmin
+            })
+        }
+
+        getUserAuth()
+    }, [])
 
     useEffect(() => {
 
@@ -44,10 +59,13 @@ export default function Singleitem({ SetNewItemtoCart }) {
     async function addToCart(id, quantity) {
 
         try {
+
             const Add = await AddCartItem(id, quantity);
             SetNewItemtoCart(Add);
             setShowAlert(true);
             setAddedToCartt(true);
+            setShowButton(true)
+
         } catch (error) {
             console.error(error);
         };
@@ -101,6 +119,10 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
                     {cookies.get("isLoggedIn") && !addedToCartt && (
                         <button onClick={() => addToCart(singleData.id, quantity)} >Add To Cart</button>
+                    )}
+
+                    {cookies.get("isLoggedIn") && showButton && (
+                        <Button variant="info"> <Link to={"/mycart"}> Go to Cart</Link> </Button>
                     )}
                 </div>
             ) : (
