@@ -1,49 +1,38 @@
 import React, { useState, useEffect } from "react";
-const APIURL = process.env.APIURL || 'http://localhost:3000/api'
+const APIURL = process.env.APIURL || 'http://localhost:3000/api';
 import { AddCartItem, getSingleInventory } from '../API';
 
-
-export default function Cart({ token,  }) {
+export default function Cart({ token }) {
     const [cartItems, setCartItems] = useState(null);
     const [totalPrice, setTotalPrice] = useState(0);
     const [address, setAddress] = useState("");
     const [quantity, setQuantity] = useState(1);
 
-    useEffect(() => {
-        async function getCartItems() {
-            try {
-                const response = await fetch(APIURL+ "/carts/mycart/", {
-                    credentials: 'include',
-                });
+    const getCartItems = async () => {
+        try {
+            const response = await fetch(APIURL + "/carts/mycart/", {
+                credentials: 'include',
+            });
 
-
-                const result = await response.json();
-                console.log(result)
-                setCartItems(result.cart);
-                // calculateTotalPrice(result.cartItems);
-            } catch (err) {
-                console.error(err);
-            }
+            const result = await response.json();
+            setCartItems(result.cart);
+        } catch (err) {
+            console.error(err);
         }
+    };
+
+    useEffect(() => {
         getCartItems();
     }, [token]);
 
     const removeItem = async (itemId) => {
         try {
-            const response = await AddCartItem(itemId,  "0");
-            // const response = await fetch(APIURL + `/carts/mycart/${itemId}`, {
-            //     method: "DELETE",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //         "Authorization": `Bearer ${token}`
-            //     }
-            // });
-            console.log(response)
+            const response = await AddCartItem(itemId, "0");
+            console.log(response);
 
             if (response) {
-               
-                // setCartItems(updatedItems);
-                console.log(setCartItems)
+                // Refetch cart items after successful removal
+                getCartItems();
             } else {
                 console.error("Failed to remove item from cart");
             }
@@ -52,28 +41,31 @@ export default function Cart({ token,  }) {
         }
     };
 
+    const updateQuantity = async (itemId, newQuantity) => {
+        try {
+            const response = await AddCartItem(itemId, newQuantity);
+            console.log(response);
 
+            if (response) {
+                // Refetch cart items after successful update
+                getCartItems();
+            } else {
+                console.error("Failed to update item quantity in cart");
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
-
-    // const handleAddressChange = (e) => {
-    //     setAddress(e.target.value);
-    // };
-
-
-    // const handleSubmit = async () => {
-    //     // Submit the cart with address information
-    //     // You can send cartItems and address to the server for processing
-    //     console.log("Cart submitted with address:", address);
-    // };
-
+    const handleQuantityChange = (event) => {
+        setQuantity(parseInt(event.target.value));
+    };
 
     return (
         <>
-            {cartItems  ? (
+            {cartItems ? (
                 <>
-
-
-{cartItems.items.map(item => (
+                    {cartItems.items.map(item => (
                         <div key={item.id}>
                             <p>{item.name}</p>
                             <p>{item.quantity}</p>
@@ -85,10 +77,7 @@ export default function Cart({ token,  }) {
                             <button onClick={() => removeItem(item.id)}>Remove</button>
                         </div>
                     ))}
-                   
                     <p>Total: ${cartItems.total_price}</p>
-                
-                    {/* <button onClick={handleSubmit}>Submit</button> */}
                 </>
             ) : (
                 <p>No items in the cart</p>
