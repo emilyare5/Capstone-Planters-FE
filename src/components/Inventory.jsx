@@ -5,7 +5,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 export default function Inventory() {
 
-    const imgAddr= '../src/assets2/'
+    const imgAddr= '../src/assets/assets2/'
 
     const [inventory, setInventory] = useState(null);
 
@@ -33,7 +33,6 @@ export default function Inventory() {
                 </div>
                 <div>
                     <img src={imgAddr+item.imgurl} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
-                 
                  </div>
                  
             </div>
