@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getUserAccess, AddCartItem, getSingleInventory } from '../API';
 import Cookies from 'universal-cookie';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export default function Singleitem({ SetNewItemtoCart }) {
 
@@ -25,6 +26,10 @@ export default function Singleitem({ SetNewItemtoCart }) {
     });
 
     const [showButton, setShowButton] = useState(false)
+
+    const [currently, setCurrently] = useState(0)
+
+    const [updateZero, setUpateZero] = useState(false)
 
 
 
@@ -64,15 +69,24 @@ export default function Singleitem({ SetNewItemtoCart }) {
             SetNewItemtoCart(Add);
             setShowAlert(true);
             setAddedToCartt(true);
+            setCurrently(quantity);
             setShowButton(true)
 
+            // if(currently < 0){
+            //     setShowButton(true)
+            // }else{
+            //     setShowButton(false);
+            // }
+
+           
         } catch (error) {
             console.error(error);
         };
     };
 
     const handleQuantityChange = (event) => {
-        setQuantity(parseInt(event.target.value));
+        setQuantity(event.target.value);
+        
 
     };
 
@@ -88,46 +102,65 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     }, [showAlert]);
 
-
+    console.log(singleData)
 
     return (
         <div>
-            {singleData ? (
-                <div>
-
-                    <h2>{singleData.name}</h2>
-                    {/* <img src={singleData.imageUrl}/> */}
-                    <p>Description: {singleData.description}</p>
-                    <p>Price: ${(singleData.price / 100).toFixed(2)}</p>
-
-                    {cookies.get("isLoggedIn") && !addedToCartt && (
-                        <label>
-                            Quantity:
-                            <input
-                                type="number"
-                                value={quantity}
-                                onChange={handleQuantityChange}
-                                min="1"
-                            />
-                        </label>
-                    )}
-
+            <div className='itemcard'>
+                {singleData ? (
                     <div>
-                        {quantity === 1 ? showAlert && <div> <p>Added {quantity} {singleData.name} To Cart!</p></div> :
-                            showAlert && <div> <p>Added {quantity} {singleData.name}s To Cart!</p></div>}
+
+                        <h2>{singleData.name}</h2>
+                        <p>${(singleData.price / 100).toFixed(2)}</p>
+                        <img src={singleData.imgurl}/>
+                        <p>Description: {singleData.description}</p>
+
+                        <div className='quantityF'>
+                            <div>
+                                {cookies.get("isLoggedIn") && !addedToCartt && (
+                                    <label>
+                                        <input
+                                            value={quantity}
+                                        />
+                                    </label>
+                                )}
+
+                            </div>
+
+                            <div>
+                                {cookies.get("isLoggedIn") && !addedToCartt && (
+                                    <div>
+                                        <Form.Label></Form.Label>
+                                        <Form.Range value={quantity} onChange={handleQuantityChange} />
+                                    </div>
+
+                                )}
+                            </div>
+
+                        </div>
+
+                        <div>
+                            {quantity === 1 ? showAlert && <div> <p>Added {quantity} {singleData.name} To Cart!</p></div> :
+                                showAlert && <div> <p>Added {quantity} {singleData.name}s To Cart!</p></div>}
+                        </div>
+
+                        {cookies.get("isLoggedIn") && !addedToCartt && (
+                            <button onClick={() => addToCart(singleData.id, quantity)} >Update Cart</button>
+                        )}
+
+                        {cookies.get("isLoggedIn") && !addedToCartt && (
+                            <p>Currently in Cart: {currently}</p>
+                        )}
+
+
+                        {cookies.get("isLoggedIn") && showButton && currently > 0 && (
+                           <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
+                        )}
                     </div>
-
-                    {cookies.get("isLoggedIn") && !addedToCartt && (
-                        <button onClick={() => addToCart(singleData.id, quantity)} >Add To Cart</button>
-                    )}
-
-                    {cookies.get("isLoggedIn") && showButton && (
-                        <Button className="addToCartButt" variant="outline-info"> <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link> </Button>
-                    )}
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
 
 
         </div>

@@ -31,3 +31,12 @@ body {
 .addToCartButt{
   background-color: rgb(116, 216, 238);
 }
+
+.itemcard{
+  border: 2px solid rgb(202, 202, 202);
+  width: 30%;
+}
+
+.quantityF{
+  display: flex;
+}
