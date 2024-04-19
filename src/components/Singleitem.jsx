@@ -5,7 +5,10 @@ import Cookies from 'universal-cookie';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+
 export default function Singleitem({ SetNewItemtoCart }) {
+
+    const imgAddr= '../src/assets/assets2/'
 
     const cookies = new Cookies();
 
@@ -112,26 +115,26 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
                         <h2>{singleData.name}</h2>
                         <p>${(singleData.price / 100).toFixed(2)}</p>
-                        <img src={singleData.imgurl}/>
+                        <img src={imgAddr+singleData.imgurl} alt={singleData.name} />
                         <p>Description: {singleData.description}</p>
 
                         <div className='quantityF'>
-                            <div>
+                            {/* <div>
                                 {cookies.get("isLoggedIn") && !addedToCartt && (
                                     <label>
                                         <input
+                                            
                                             value={quantity}
                                         />
                                     </label>
                                 )}
 
-                            </div>
+                            </div> */}
 
                             <div>
                                 {cookies.get("isLoggedIn") && !addedToCartt && (
                                     <div>
-                                        <Form.Label></Form.Label>
-                                        <Form.Range value={quantity} onChange={handleQuantityChange} />
+                                        <Form.Control type="number" value={quantity} onChange={handleQuantityChange} min="1"/>
                                     </div>
 
                                 )}
@@ -152,9 +155,12 @@ export default function Singleitem({ SetNewItemtoCart }) {
                             <p>Currently in Cart: {currently}</p>
                         )}
 
-
-                        {cookies.get("isLoggedIn") && showButton && currently > 0 && (
-                           <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
+                        {cookies.get("isLoggedIn") && showButton && (
+                            <div>
+                                <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
+                                <Link className= "contiuneShoppingButt"to={"/"}>Contiune Shopping</Link>
+                            </div>
+                          
                         )}
                     </div>
                 ) : (
