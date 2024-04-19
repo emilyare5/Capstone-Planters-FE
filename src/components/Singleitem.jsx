@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 
 export default function Singleitem({ SetNewItemtoCart }) {
 
-    const imgAddr= '../src/assets/assets2/'
+    const imgAddr = '../src/assets/assets2/'
 
     const cookies = new Cookies();
 
@@ -31,10 +31,6 @@ export default function Singleitem({ SetNewItemtoCart }) {
     const [showButton, setShowButton] = useState(false)
 
     const [currently, setCurrently] = useState(0)
-
-    const [updateZero, setUpateZero] = useState(false)
-
-
 
 
     useEffect(() => {
@@ -75,13 +71,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
             setCurrently(quantity);
             setShowButton(true)
 
-            // if(currently < 0){
-            //     setShowButton(true)
-            // }else{
-            //     setShowButton(false);
-            // }
-
-           
+            
         } catch (error) {
             console.error(error);
         };
@@ -89,7 +79,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     const handleQuantityChange = (event) => {
         setQuantity(event.target.value);
-        
+
 
     };
 
@@ -109,32 +99,24 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     return (
         <div>
+            <div>
+                <h1>Buy Now</h1>
+            </div>
             <div className='itemcard'>
                 {singleData ? (
                     <div>
 
                         <h2>{singleData.name}</h2>
                         <p>${(singleData.price / 100).toFixed(2)}</p>
-                        <img src={imgAddr+singleData.imgurl} alt={singleData.name} />
+                        <img src={imgAddr + singleData.imgurl} alt={singleData.name} />
                         <p>Description: {singleData.description}</p>
 
                         <div className='quantityF'>
-                            {/* <div>
-                                {cookies.get("isLoggedIn") && !addedToCartt && (
-                                    <label>
-                                        <input
-                                            
-                                            value={quantity}
-                                        />
-                                    </label>
-                                )}
-
-                            </div> */}
 
                             <div>
                                 {cookies.get("isLoggedIn") && !addedToCartt && (
                                     <div>
-                                        <Form.Control type="number" value={quantity} onChange={handleQuantityChange} min="1"/>
+                                        <Form.Control type="number" value={quantity} onChange={handleQuantityChange} min="1" />
                                     </div>
 
                                 )}
@@ -148,7 +130,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
                         </div>
 
                         {cookies.get("isLoggedIn") && !addedToCartt && (
-                            <button onClick={() => addToCart(singleData.id, quantity)} >Update Cart</button>
+                            <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary" >Update Cart</Button>
                         )}
 
                         {cookies.get("isLoggedIn") && !addedToCartt && (
@@ -156,11 +138,15 @@ export default function Singleitem({ SetNewItemtoCart }) {
                         )}
 
                         {cookies.get("isLoggedIn") && showButton && (
-                            <div>
-                                <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
-                                <Link className= "contiuneShoppingButt"to={"/"}>Contiune Shopping</Link>
+                            <div className='buttBox'>
+                                <div>
+                                    <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
+                                </div>
+                                <div>
+                                    <Link className="contiuneShoppingButt" to={"/"}>Keep Shopping</Link>
+                                </div>
                             </div>
-                          
+
                         )}
                     </div>
                 ) : (
