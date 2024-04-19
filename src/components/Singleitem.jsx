@@ -98,8 +98,8 @@ export default function Singleitem({ SetNewItemtoCart }) {
     console.log(singleData)
 
     return (
-        <div>
-            <div>
+        <div className='container'>
+            <div className='title'>
                 <h1>Buy Now</h1>
             </div>
             <div className='itemcard'>

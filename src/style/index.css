@@ -9,8 +9,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-   width: 100vw;
-  justify-content: center; */
+   width: 100vw;*/
+  display: flex;
+  justify-content: center;
 }
 
 .container{
@@ -48,7 +49,7 @@ body {
   margin: 5px;
   padding: 5px;
   color: darkblue;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   /* align-self: center; */
   justify-content: center;
   /* justify-self: center; */
@@ -62,6 +63,79 @@ body {
  
 }
 
+.title{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  color: rgb(190, 79, 246);
+}
+
+.itemcard{
+  display: grid;
+ justify-items: center; 
+  border: solid rgb(204, 53, 116) 5px;
+  background-color:  rgba(175, 234, 80, 0.758);
+  margin: 5px;
+  padding: 5px;
+  padding-left: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(136, 7, 201);
+  width: 40%; 
+  word-wrap: break-word;
+}
+
+.itemcard img{
+  width: 200px; 
+  height: 200px;
+  /* margin-left: 20px; */
+  margin-bottom: 10px;
+ 
+}
+
+.addToCartLinkButt{
+  color: #040404;
+}
+
+.contiuneShoppingButt{
+  color:#040404;
+}
+
+.addToCartButt{
+  background-color: rgb(116, 216, 238);
+}
+
+
+.quantityF{
+  display: flex;
+}
+
+.buttBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(179, 179, 250);
+  border-radius: 25px;
+}
+
+.cartcard{
+  display: grid;
+  border: solid rgb(204, 53, 116) 5px;
+  background-color:  rgba(175, 234, 80, 0.758);
+  margin: 5px;
+  padding: 5px;
+  color: darkblue;
+  font-family: Arial, Helvetica, sans-serif;
+  /* align-self: center; */
+  justify-content: center;
+  /* justify-self: center; */
+}
+
+.cartcard img{
+  width: 100px; 
+  height: 100px;
+  /* margin-left: 20px; */
+  margin-bottom: 10px;
+ 
+}
 /* .productCard link{
   
 } */
@@ -91,32 +165,3 @@ body {
   width: 40%;
 }
 
-.addToCartLinkButt{
-  color: #040404;
-}
-
-.contiuneShoppingButt{
-  color:#040404;
-}
-
-.addToCartButt{
-  background-color: rgb(116, 216, 238);
-}
-
-.itemcard{
-  border: 2px solid rgb(202, 202, 202);
-  /* width: 30%; */
-  width: fit-content;
-}
-
-.quantityF{
-  display: flex;
-}
-
-.buttBox{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgb(179, 179, 250);
-  border-radius: 25px;
-}

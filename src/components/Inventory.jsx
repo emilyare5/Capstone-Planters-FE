@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getAllInventory } from '../API';
 import { Link, Route, Routes } from 'react-router-dom';
 
-<div className='background'></div>
+
 export default function Inventory() {
 
     const imgAddr= '../src/assets/assets2/'
@@ -24,7 +24,7 @@ export default function Inventory() {
    
 
     return (
-        
+        <div className='container'>
             <div className='gridContainer'>
              {inventory && inventory.map(item => {
              return <div className='productCard' key={item.id}>
@@ -41,7 +41,7 @@ export default function Inventory() {
              })}
 
             </div>
-        
+        </div>
     )
 
 }
