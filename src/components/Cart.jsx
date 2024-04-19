@@ -25,6 +25,9 @@ export default function Cart({ token,  }) {
                 console.error(err);
             }
         }
+
+
+        
         getCartItems();
     }, [token]);
 
