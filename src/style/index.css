@@ -1,9 +1,76 @@
 body {
   margin: 0;
   padding: 0;
+  background-image: url(../src/assets/stone-bloom-blossom-af1e4c-1024.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* display: flex;
+  margin: 0;
+  padding: 0;
   height: 100vh;
-  width: 100vw;
+   width: 100vw;
+  justify-content: center; */
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .background{
+  position: fixed;
+  left: 10%;
+  right:10%;
+  bottom: 0%;
+  top: 10%;
+  background-image: url(../src/assets/stone-bloom-blossom-af1e4c-1024.jpg);
+  height: 100%;
+  width: 1000px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: auto;
+} */
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 20px; 
+  padding: 20px; 
+}
+
+.productCard{
+  display: grid;
+  border: solid rgb(204, 53, 116) 5px;
+  background-color:  rgba(175, 234, 80, 0.758);
+  margin: 5px;
+  padding: 5px;
+  color: darkblue;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* align-self: center; */
+  justify-content: center;
+  /* justify-self: center; */
+}
+
+.productCard img{
+  width: 100px; 
+  height: 100px;
+  /* margin-left: 20px; */
+  margin-bottom: 10px;
+ 
+}
+
+/* .productCard link{
+  
+} */
+
+/* .navBar{
+
+} */
+
+
 
 .forms{
   width: 50%;
