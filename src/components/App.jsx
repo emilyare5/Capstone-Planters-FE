@@ -14,6 +14,7 @@ import AdminCustCart from './admin/AdminCustCart'
 import AdminInvEdit from './admin/AdminInvEdit'
 import Navibar from './Navbar'
 import OrderConfirmation from './OrderConfirmation';
+import CheckoutForm from './CheckoutForm';
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
         <Route path="/mycart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckoutForm />} />
         <Route path="/completedorder" element={<OrderConfirmation/>} />
         <Route path="/single/:itemId" element={<Singleitem  SetNewItemtoCart={SetNewItemtoCart} />} />
         <Route path="/admin/customers/" element={<AdminCust />} />

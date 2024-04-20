@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 const APIURL = process.env.APIURL || 'http://localhost:3000/api';
 import { AddCartItem, getSingleInventory } from '../API';
-import CheckoutForm from "./CheckoutForm";
+// import CheckoutForm from "./CheckoutForm";
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router";
 
 export default function Cart({ token }) {
     const [cartItems, setCartItems] = useState(null);
     const [totalPrice, setTotalPrice] = useState(0);
     const [address, setAddress] = useState("");
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
+
+    const handleOnClick = () => {
+      navigate('/checkout');
+    };
 
     const getCartItems = async () => {
         try {
@@ -81,7 +88,12 @@ export default function Cart({ token }) {
                         </div>
                     ))}
                     <p>Total: ${cartItems.total_price}</p>
-                    <CheckoutForm totalPrice={cartItems.total_price} address={address} />
+
+                    <Button variant="primary" type="submit" onClick={handleOnClick}>
+        Go to Checkout
+      </Button>
+
+                    
                 </>
             ) : (
                 <p>No items in the cart</p>
