@@ -62,29 +62,7 @@ export default function Cart({ token }) {
         setQuantity(parseInt(event.target.value));
     };
 
-    // return (
-    //     <>
-    //         {cartItems ? (
-    //             <>
-    //                 {cartItems.items.map(item => (
-    //                     <div key={item.id}>
-    //                         <p>{item.name}</p>
-    //                         <p>{item.quantity}</p>
-    //                         <input
-    //                             type="number"
-    //                             value={item.quantity}
-    //                             onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-    //                         />
-    //                         <button onClick={() => removeItem(item.id)}>Remove</button>
-    //                     </div>
-    //                 ))}
-    //                 <p>Total: ${cartItems.total_price}</p>
-    //             </>
-    //         ) : (
-    //             <p>No items in the cart</p>
-    //         )}
-    //     </>
-    // );
+
 
     return (
         <>
