@@ -13,6 +13,7 @@ import AdminCustEdit from './admin/AdminCustEdit';
 import AdminCustCart from './admin/AdminCustCart'
 import AdminInvEdit from './admin/AdminInvEdit'
 import Navibar from './Navbar'
+import OrderConfirmation from './OrderConfirmation';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Inventory />} />
         <Route path="/mycart" element={<Cart />} />
+        <Route path="/completedorder" element={<OrderConfirmation/>} />
         <Route path="/single/:itemId" element={<Singleitem  SetNewItemtoCart={SetNewItemtoCart} />} />
         <Route path="/admin/customers/" element={<AdminCust />} />
         <Route path="/admin/customers/:custId" element={<AdminCustEdit />} />
