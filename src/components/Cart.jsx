@@ -84,12 +84,13 @@ export default function Cart({ token }) {
                                 value={item.quantity}
                                 onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
                             />
-                            <button onClick={() => removeItem(item.id)}>Remove</button>
+                            <Button variant="outline-danger" size="md"  onClick={() => removeItem(item.id)}>Remove</Button>
+                            
                         </div>
                     ))}
                     <p>Total: ${cartItems.total_price}</p>
 
-                    <Button variant="primary" type="submit" onClick={handleOnClick}>
+                    <Button variant="primary"  type="submit" onClick={handleOnClick}>
         Go to Checkout
       </Button>
 
