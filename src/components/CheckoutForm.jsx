@@ -134,9 +134,9 @@ function CheckoutForm() {
         </Form.Group>
       </Row>
 
-      <Form.Group className="mb-3" id="formGridCheckbox">
+      {/* <Form.Group className="mb-3" id="formGridCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+      </Form.Group> */}
 
       <Button variant="primary" type="submit" onClick={handleOnClick}>
         Submit
