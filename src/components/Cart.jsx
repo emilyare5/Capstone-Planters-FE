@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 const APIURL = process.env.APIURL || 'http://localhost:3000/api';
 import { AddCartItem, getSingleInventory } from '../API';
+import CheckoutForm from "./CheckoutForm";
 
 export default function Cart({ token }) {
     const [cartItems, setCartItems] = useState(null);
@@ -61,6 +62,30 @@ export default function Cart({ token }) {
         setQuantity(parseInt(event.target.value));
     };
 
+    // return (
+    //     <>
+    //         {cartItems ? (
+    //             <>
+    //                 {cartItems.items.map(item => (
+    //                     <div key={item.id}>
+    //                         <p>{item.name}</p>
+    //                         <p>{item.quantity}</p>
+    //                         <input
+    //                             type="number"
+    //                             value={item.quantity}
+    //                             onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+    //                         />
+    //                         <button onClick={() => removeItem(item.id)}>Remove</button>
+    //                     </div>
+    //                 ))}
+    //                 <p>Total: ${cartItems.total_price}</p>
+    //             </>
+    //         ) : (
+    //             <p>No items in the cart</p>
+    //         )}
+    //     </>
+    // );
+
     return (
         <>
             {cartItems ? (
@@ -78,10 +103,12 @@ export default function Cart({ token }) {
                         </div>
                     ))}
                     <p>Total: ${cartItems.total_price}</p>
+                    <CheckoutForm totalPrice={cartItems.total_price} address={address} />
                 </>
             ) : (
                 <p>No items in the cart</p>
             )}
         </>
     );
+    
 }
