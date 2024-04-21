@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getUserAccess, AddCartItem, getSingleInventory } from '../API';
+import { getUserAccess, getSingleInventory, getCartItems, updateCartItem } from '../API';
 import Cookies from 'universal-cookie';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -31,12 +31,14 @@ export default function Singleitem({ SetNewItemtoCart }) {
     const [showButton, setShowButton] = useState(false)
 
     const [currently, setCurrently] = useState(0)
+    
 
 
     useEffect(() => {
         async function getUserAuth() {
 
-            const user = await getUserAccess()
+            const user = await getUserAccess();
+
             setUserAccess({
                 custId: user.custId,
                 username: user.username,
@@ -64,12 +66,11 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
         try {
 
-            const Add = await AddCartItem(id, quantity);
+            const Add = await updateCartItem(id, quantity);
             SetNewItemtoCart(Add);
             setShowAlert(true);
             setAddedToCartt(true);
-            setCurrently(quantity);
-            setShowButton(true)
+            setShowButton(true);
 
             
         } catch (error) {
@@ -79,8 +80,6 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     const handleQuantityChange = (event) => {
         setQuantity(event.target.value);
-
-
     };
 
     useEffect(() => {
@@ -95,8 +94,30 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     }, [showAlert]);
 
-    console.log(singleData)
+    
+    useEffect(()=>{
 
+        async function getQuantity(){
+
+            const itemData = await getCartItems();
+
+            const arrayCart = itemData.cart.items;
+        
+            arrayCart.find(item => {
+                if(item.id == singleData.id){
+                    
+                    const quantityNum = item.quantity;
+                    setCurrently(quantityNum);
+                }
+            });
+        }
+
+        getQuantity()
+        
+    },[addedToCartt, singleData])
+
+
+    
     return (
         <div className='container'>
             <div className='title'>

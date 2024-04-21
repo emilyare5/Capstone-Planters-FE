@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 const APIURL = process.env.APIURL || 'http://localhost:3000/api'
-import { AddCartItem, getSingleInventory } from '../API';
+import { getSingleInventory, updateCartItem } from '../API';
 
 
 export default function Cart({ token,  }) {
@@ -33,7 +33,7 @@ export default function Cart({ token,  }) {
 
     const removeItem = async (itemId) => {
         try {
-            const response = await AddCartItem(itemId,  "0");
+            const response = await updateCartItem(itemId,  "0");
             // const response = await fetch(APIURL + `/carts/mycart/${itemId}`, {
             //     method: "DELETE",
             //     headers: {
