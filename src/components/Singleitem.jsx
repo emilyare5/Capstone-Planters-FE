@@ -158,7 +158,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
                             <p>Currently in Cart: {currently}</p>
                         )}
 
-                        {cookies.get("isLoggedIn") && showButton && (
+                        {cookies.get("isLoggedIn") && (
                             <div className='buttBox'>
                                 <div>
                                     <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
