@@ -31,7 +31,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
     const [showButton, setShowButton] = useState(false)
 
     const [currently, setCurrently] = useState(0)
-    
+
 
 
     useEffect(() => {
@@ -94,18 +94,18 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     }, [showAlert]);
 
-    
-    useEffect(()=>{
 
-        async function getQuantity(){
+    useEffect(() => {
+
+        async function getQuantity() {
 
             const itemData = await getCartItems();
 
             const arrayCart = itemData.cart.items;
-        
+
             arrayCart.find(item => {
-                if(item.id == singleData.id){
-                    
+                if (item.id == singleData.id) {
+
                     const quantityNum = item.quantity;
                     setCurrently(quantityNum);
                 }
@@ -113,11 +113,11 @@ export default function Singleitem({ SetNewItemtoCart }) {
         }
 
         getQuantity()
-        
-    },[addedToCartt, singleData])
+
+    }, [addedToCartt, singleData])
 
 
-    
+
     return (
         <div className='container'>
             <div className='title'>
@@ -146,13 +146,14 @@ export default function Singleitem({ SetNewItemtoCart }) {
                         </div>
 
                         <div>
-                            {quantity === 1 ? showAlert && <div> <p>Added {quantity} {singleData.name} To Cart!</p></div> :
-                                showAlert && <div> <p>Added {quantity} {singleData.name}s To Cart!</p></div>}
+                            {showAlert && <div> <p>Updated Cart!</p></div>}   
                         </div>
 
-                        {cookies.get("isLoggedIn") && !addedToCartt && (
-                            <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary" >Update Cart</Button>
-                        )}
+                        <div>
+                            {cookies.get("isLoggedIn") && !addedToCartt && (
+                                <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary"  >Update Cart</Button>
+                            )}
+                        </div>
 
                         {cookies.get("isLoggedIn") && !addedToCartt && (
                             <p>Currently in Cart: {currently}</p>
