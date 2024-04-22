@@ -72,7 +72,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
             setAddedToCartt(true);
             setShowButton(true);
 
-            
+
         } catch (error) {
             console.error(error);
         };
@@ -146,13 +146,18 @@ export default function Singleitem({ SetNewItemtoCart }) {
                         </div>
 
                         <div>
-                            {showAlert && <div> <p>Updated Cart!</p></div>}   
+                            {showAlert && <div> <p>Updated Cart!</p></div>}
                         </div>
 
                         <div>
-                            {cookies.get("isLoggedIn") && !addedToCartt && (
-                                <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary"  >Update Cart</Button>
+                            {cookies.get("isLoggedIn") && (
+                                currently === 0 ? (
+                                    <Button onClick={() => addToCart(singleData.id, 1)} variant="outline-primary">Add to Cart</Button>
+                                ) : (
+                                    <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary">Update Cart</Button>
+                                )
                             )}
+
                         </div>
 
                         {cookies.get("isLoggedIn") && !addedToCartt && (
