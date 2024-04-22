@@ -103,13 +103,17 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
             const arrayCart = itemData.cart.items;
 
-            arrayCart.find(item => {
-                if (item.id == singleData.id) {
+           
+            if (arrayCart && singleData){
+                arrayCart.find(item => {
+                    if(item.id == singleData.id){
+                        const quantityNum = item.quantity;
+                        setCurrently(quantityNum);
+                        setQuantity(quantityNum)
+                    }
+                });
+            }
 
-                    const quantityNum = item.quantity;
-                    setCurrently(quantityNum);
-                }
-            });
         }
 
         getQuantity()
