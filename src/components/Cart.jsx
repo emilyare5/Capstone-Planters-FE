@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from "react";
 const APIURL = process.env.APIURL || 'http://localhost:3000/api';
 import { AddCartItem, getSingleInventory } from '../API';
+import Form from 'react-bootstrap/Form';
 // import CheckoutForm from "./CheckoutForm";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
+import CheckoutForm from "./CheckoutForm";
+
+function SelectDelivery() {
+    return (
+      <>
+        <Form.Select size="lg">
+        <option>Delivery</option>
+        <option>Pick up</option>
+        </Form.Select>
+      </>
+    );
+  }
+
 
 export default function Cart({ token }) {
     const [cartItems, setCartItems] = useState(null);
@@ -11,6 +25,8 @@ export default function Cart({ token }) {
     const [address, setAddress] = useState("");
     const [quantity, setQuantity] = useState(1);
     const navigate = useNavigate();
+
+    const imgAddr= '../src/assets/assets2/'
 
     const handleOnClick = () => {
       navigate('/checkout');
@@ -75,9 +91,12 @@ export default function Cart({ token }) {
         <>
             {cartItems ? (
                 <>
+                <div id="cartPage">
+                    <div id="cartPage_myCart">
                     {cartItems.items.map(item => (
                         <div key={item.id}>
                             <p>{item.name}</p>
+                            <img src={imgAddr+item.imgurl} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
                             <p>{item.quantity}</p>
                             <input
                                 type="number"
@@ -87,14 +106,26 @@ export default function Cart({ token }) {
                             <Button variant="outline-danger" size="md"  onClick={() => removeItem(item.id)}>Remove</Button>
                             
                         </div>
-                    ))}
-                    <p>Total: ${cartItems.total_price}</p>
-
-                    <Button variant="primary"  type="submit" onClick={handleOnClick}>
-        Go to Checkout
-      </Button>
-
-                    
+                    ))}               
+                    </div>
+                        <div id="cartPage_FormC">
+                        <div id="cartPage_Form">
+                            <div id="cartPage_Form1">
+                                <h2>Order Details</h2>
+                                <p>Total: {(cartItems.total_price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
+                                <SelectDelivery/>     
+                            </div>
+                            <div id="cartPage_Form2"></div>
+                            <div id="cartPage_Form3">
+                            <div className="d-grid gap-2">  
+                                <Button variant="primary" type="submit" onClick={handleOnClick}>Go to Checkout</Button>
+                                <Button variant="primary" type="submit">Continue Shopping</Button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                
                 </>
             ) : (
                 <p>No items in the cart</p>
