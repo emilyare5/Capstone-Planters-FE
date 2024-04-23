@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getUserAccess, AddCartItem, getSingleInventory } from '../API';
+import { getUserAccess, getSingleInventory, getCartItems, updateCartItem } from '../API';
 import Cookies from 'universal-cookie';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -28,15 +28,16 @@ export default function Singleitem({ SetNewItemtoCart }) {
         isAdmin: ""
     });
 
-    const [showButton, setShowButton] = useState(false)
 
     const [currently, setCurrently] = useState(0)
+
 
 
     useEffect(() => {
         async function getUserAuth() {
 
-            const user = await getUserAccess()
+            const user = await getUserAccess();
+
             setUserAccess({
                 custId: user.custId,
                 username: user.username,
@@ -64,14 +65,13 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
         try {
 
-            const Add = await AddCartItem(id, quantity);
+            const Add = await updateCartItem(id, quantity);
             SetNewItemtoCart(Add);
             setShowAlert(true);
             setAddedToCartt(true);
-            setCurrently(quantity);
-            setShowButton(true)
+           
 
-            
+
         } catch (error) {
             console.error(error);
         };
@@ -79,8 +79,6 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     const handleQuantityChange = (event) => {
         setQuantity(event.target.value);
-
-
     };
 
     useEffect(() => {
@@ -95,7 +93,33 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     }, [showAlert]);
 
-    console.log(singleData)
+
+    useEffect(() => {
+
+        async function getQuantity() {
+
+            const itemData = await getCartItems();
+
+            const arrayCart = itemData.cart.items;
+
+           
+            if (arrayCart && singleData){
+                arrayCart.find(item => {
+                    if(item.id == singleData.id){
+                        const quantityNum = item.quantity;
+                        setCurrently(quantityNum);
+                        setQuantity(quantityNum)
+                    }
+                });
+            }
+
+        }
+
+        getQuantity()
+
+    }, [addedToCartt, singleData])
+
+
 
     return (
         <div className='container'>
@@ -125,19 +149,25 @@ export default function Singleitem({ SetNewItemtoCart }) {
                         </div>
 
                         <div>
-                            {quantity === 1 ? showAlert && <div> <p>Added {quantity} {singleData.name} To Cart!</p></div> :
-                                showAlert && <div> <p>Added {quantity} {singleData.name}s To Cart!</p></div>}
+                            {showAlert && <div> <p>Updated Cart!</p></div>}
                         </div>
 
-                        {cookies.get("isLoggedIn") && !addedToCartt && (
-                            <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary" >Update Cart</Button>
-                        )}
+                        <div>
+                            {cookies.get("isLoggedIn") && (
+                                currently === 0 ? (
+                                    <Button onClick={() => addToCart(singleData.id, 1)} variant="outline-primary">Add to Cart</Button>
+                                ) : (
+                                    <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary">Update Cart</Button>
+                                )
+                            )}
+
+                        </div>
 
                         {cookies.get("isLoggedIn") && !addedToCartt && (
                             <p>Currently in Cart: {currently}</p>
                         )}
 
-                        {cookies.get("isLoggedIn") && showButton && (
+                        {cookies.get("isLoggedIn") && (
                             <div className='buttBox'>
                                 <div>
                                     <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
