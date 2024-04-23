@@ -28,7 +28,6 @@ export default function Singleitem({ SetNewItemtoCart }) {
         isAdmin: ""
     });
 
-    const [showButton, setShowButton] = useState(false)
 
     const [currently, setCurrently] = useState(0)
 
@@ -70,7 +69,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
             SetNewItemtoCart(Add);
             setShowAlert(true);
             setAddedToCartt(true);
-            setShowButton(true);
+           
 
 
         } catch (error) {
