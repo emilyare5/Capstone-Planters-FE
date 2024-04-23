@@ -40,8 +40,8 @@ export async function getSingleInventory(itemID) {
 }
 
 
-// add to cart           
-export async function AddCartItem(itemID, quantity){
+// update the amount of item in user cart 
+export async function updateCartItem(itemID, quantity){
     try{
         const response = await fetch(APIURL + "/carts/mycart/update",
             {
@@ -272,17 +272,34 @@ export async function getUserAccess() {
 }
 
 
+
 export const CheckoutCart = async () => {
     try {
         const response = await fetch(APIURL + "/carts/mycart/checkout", {
             method: "PATCH",
+          
+// Get cart products
+export async function getCartItems(){
+    try {
+        const response = await fetch(APIURL+ "/carts/mycart/", {
+
             credentials: 'include',
         });
 
         const result = await response.json();
+
         console.log(result)
         // setCartItems(result.cart);
     } catch (err) {
         console.error(err);
     }
 };
+
+        
+        return result
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+

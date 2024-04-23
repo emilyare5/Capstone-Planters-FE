@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 const APIURL = process.env.APIURL || 'http://localhost:3000/api';
 import { AddCartItem, getSingleInventory } from '../API';
 import Form from 'react-bootstrap/Form';
@@ -43,16 +44,21 @@ export default function Cart({ token }) {
         } catch (err) {
             console.error(err);
         }
-    };
 
     useEffect(() => {
+
         getCartItems();
     }, [token]);
 
     const removeItem = async (itemId) => {
         try {
+
             const response = await AddCartItem(itemId, "0");
             console.log(response);
+            const response = await updateCartItem(itemId,  "0");
+            
+            console.log(response)
+
 
             if (response) {
                 // Refetch cart items after successful removal
