@@ -270,3 +270,19 @@ export async function getUserAccess() {
         console.error(error)
     }
 }
+
+
+export const CheckoutCart = async () => {
+    try {
+        const response = await fetch(APIURL + "/carts/mycart/checkout", {
+            method: "PATCH",
+            credentials: 'include',
+        });
+
+        const result = await response.json();
+        console.log(result)
+        // setCartItems(result.cart);
+    } catch (err) {
+        console.error(err);
+    }
+};

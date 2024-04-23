@@ -5,11 +5,13 @@ import Row from 'react-bootstrap/Row';
 import OrderConfirmation from './OrderConfirmation';
 import { useNavigate } from 'react-router';
 import Cart from './Cart';
+import { CheckoutCart } from '../API';
 
 function CheckoutForm() {
     const navigate = useNavigate();
 
     const handleOnClick = () => {
+      CheckoutCart();
       navigate('/completedorder');
     };
     
