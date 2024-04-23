@@ -55,6 +55,7 @@ export default function Navibar({isLoggedIn}) {
                     </Nav.Item>
                     <NavDropdown.Item href="/mycart">My Cart</NavDropdown.Item>
                     <NavDropdown.Item href="#cart">My Account</NavDropdown.Item>
+                    <NavDropdown.Item href="/myorders">My Orders</NavDropdown.Item>
                     <NavDropdown.Divider />
                     {
                         userAccess.isAdmin ? <AdminNavs />
