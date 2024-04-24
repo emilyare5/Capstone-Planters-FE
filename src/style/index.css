@@ -211,3 +211,34 @@ body {
   text-align: center;
 }
 
+.SearchContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+
+}
+
+.searchBar{
+  position: sticky;
+  top:100px;
+  margin-top: 30px;
+  border: 1px solid grey;
+  max-width: 300px;
+  min-width: 300px;
+  width: 300px;
+  height: 70vh;
+  background-color: rgb(255, 255, 255);
+}
+
+#searchBarDivider{
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px grey solid;
+  border-collapse: collapse;
+}
+
+#navbar{
+  position: sticky;
+  top:1px;
+}
