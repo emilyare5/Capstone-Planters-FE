@@ -105,7 +105,9 @@ export default function Inventory() {
         <div>
             <br />
             <br />
+            <div className='admin'>
             <h2>View and Update Inventory Data</h2>
+            </div>
             <br />
             <br />
             <div className="forms">

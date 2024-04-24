@@ -144,7 +144,9 @@ export default function AdminCustEdit() {
     function CustDetailsTable({ cust }) {
         return (
             <div>
+                <div className='admin'>
                 <h3>CustomerID: {cust.id}</h3>
+                 </div>
                 <div key={cust.id}>
                     <Table striped bordered hover className="tables">
                         <tbody>
@@ -191,7 +193,9 @@ export default function AdminCustEdit() {
     function AdrressDetailsTable({ cust }) {
         return (
             <div>
+                <div className='admin'>
                 <h3>Address ID: {cust.id}</h3>
+                </div>
                 {cust.address ? (
                     <div >
                         <Table striped bordered hover className="tables">
@@ -238,7 +242,9 @@ export default function AdminCustEdit() {
         <div>
             <br />
             <br />
+            <div className='admin'>
             <h2>Customer Edit</h2>
+            </div>
             <br />
             <br />
             <div className="forms" >

@@ -49,16 +49,19 @@ export default function AdminCustCart() {
     }, [renderFlag])
     
     return (
-        <div>
+        <div className='container'>
             <br />
             <br />
+            <div className='admin'>
             <h2>Customer Cart</h2>
+            </div>
             <br />
             <br />
             {custCart ? (
                 <div >
+                    <div className='admin'>
                     <h3>Cart ID: {custCart.id}</h3>
-                    {/* <div > */}
+                    </div >
                         <Table striped bordered hover className="smallTables">
                             <tbody>
                                 <tr >
@@ -84,7 +87,9 @@ export default function AdminCustCart() {
                                 </tr>
                             </tbody>
                         </Table>
+                        <div className='admin'>
                         <h3>Items in Cart</h3>
+                        </div>
 
                                 {cartItems && cartItems.map(item => {
                                     return (

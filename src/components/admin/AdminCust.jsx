@@ -45,10 +45,12 @@ export default function AdminCust() {
 
 
     return (
-        <div>
+        <div className='container'>
             <br />
             <br />
+            <div className='admin'> 
             <h2>View and Update Customer Data</h2>
+            </div>
             <br />
             <br />
             <Table striped bordered hover className="tables">

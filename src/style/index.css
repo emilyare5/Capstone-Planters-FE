@@ -271,3 +271,11 @@ body {
   position: sticky;
   top:1px;
 }
+
+.admin{
+  background-color: white;
+  color: rgb(41, 26, 245);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  padding: 10px;
+}
