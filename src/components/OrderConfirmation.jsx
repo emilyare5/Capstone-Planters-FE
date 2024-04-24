@@ -14,10 +14,12 @@ function OrderConfirmation() {
   }, []);
 
   return (
-    <div>
+    <div className='container'>
+      <div className='order'>
       <h2>Order Confirmation</h2>
       {orderNumber && <p>Your order number is: {orderNumber}</p>}
       <p>Thank you for your order. We'll see you again soon :)</p>
+    </div>
     </div>
   );
 }

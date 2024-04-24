@@ -231,6 +231,15 @@ body {
   justify-content: center;
 }
 
+.order{
+  margin: 40px;
+  padding: 15px;
+  background-color: rgba(196, 240, 35, 0.788);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  color:  rgb(75, 13, 132);
+}
+
 .SearchContainer{
   display: flex;
   flex-direction: row;
