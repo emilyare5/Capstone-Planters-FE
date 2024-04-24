@@ -24,7 +24,7 @@ body {
 .container2{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: end;
   
   width: 100vw;
 }
@@ -137,6 +137,7 @@ body {
 .cartcard{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   border: solid rgb(211, 8, 167) 5px;
   background-color:  rgba(34, 247, 155, 0.731);
   margin: 50px;
