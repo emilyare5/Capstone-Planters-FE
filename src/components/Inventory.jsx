@@ -5,8 +5,6 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 export default function Inventory() {
 
-    const imgAddr= '../src/assets/assets2/'
-
     const [inventory, setInventory] = useState(null);
 
     useEffect(() => {
@@ -32,7 +30,7 @@ export default function Inventory() {
                     <div>
                         <Link to={`/single/${item.id}`}> {item.name} </Link>
                         <p>Price: {(item.price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
-                        <img src={imgAddr+item.imgurl} alt={item.name} />
+                        <img src={item.imgurl} alt={item.name} />
                         {/* style={{ maxWidth: '100px', maxHeight: '100px' }} */}
                     
                     </div>

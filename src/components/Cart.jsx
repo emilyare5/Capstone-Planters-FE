@@ -27,8 +27,6 @@ export default function Cart({ token }) {
     const [quantity, setQuantity] = useState(1);
     const navigate = useNavigate();
 
-    const imgAddr= '../src/assets/assets2/'
-
     const handleOnClick = () => {
       navigate('/checkout');
     };
@@ -97,7 +95,7 @@ export default function Cart({ token }) {
                     {cartItems.items.map(item => (
                         <div key={item.id}>
                             <p>{item.name}</p>
-                            <img src={imgAddr+item.imgurl} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                            <img src={item.imgurl} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
                             <p>{item.quantity}</p>
                             <input
                                 type="number"

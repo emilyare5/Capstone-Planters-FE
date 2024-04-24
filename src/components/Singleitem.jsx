@@ -7,7 +7,6 @@ import Form from 'react-bootstrap/Form';
 
 
 export default function Singleitem() {
-    const imgAddr = '../src/assets/assets2/'
     const cookies = new Cookies();
     const [singleData, setSingleData] = useState(null);
     let { itemId } = useParams();
@@ -129,7 +128,7 @@ export default function Singleitem() {
 
                         <h2>{singleData.name}</h2>
                         <p>${(singleData.price / 100).toFixed(2)}</p>
-                        <img src={imgAddr + singleData.imgurl} alt={singleData.name} />
+                        <img src={singleData.imgurl} alt={singleData.name} />
                         <p>Description: {singleData.description}</p>
 
                         <div className='quantityF'>
