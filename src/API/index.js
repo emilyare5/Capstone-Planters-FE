@@ -277,6 +277,15 @@ export const CheckoutCart = async () => {
     try {
         const response = await fetch(APIURL + "/carts/mycart/checkout", {
             method: "PATCH",
+            credentials: 'include',
+        });
+        const result = await response.json();
+        console.log(result)
+        // setCartItems(result.cart);
+    } catch (err) {
+        console.error(err);
+    }
+};
           
 // Get cart products
 export async function getCartItems(){
@@ -289,17 +298,10 @@ export async function getCartItems(){
         const result = await response.json();
 
         console.log(result)
+        return result
         // setCartItems(result.cart);
     } catch (err) {
         console.error(err);
     }
 };
-
-        
-        return result
-
-    } catch (error) {
-        console.error(error)
-    }
-}
 

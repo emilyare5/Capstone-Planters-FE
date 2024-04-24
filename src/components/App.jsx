@@ -18,7 +18,6 @@ import CheckoutForm from './CheckoutForm';
 
 
 const App = () => {
-  const [newItemAdded, SetNewItemtoCart] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   return (
@@ -31,7 +30,7 @@ const App = () => {
         <Route path="/mycart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutForm />} />
         <Route path="/completedorder" element={<OrderConfirmation/>} />
-        <Route path="/single/:itemId" element={<Singleitem  SetNewItemtoCart={SetNewItemtoCart} />} />
+        <Route path="/single/:itemId" element={<Singleitem  />} />
         <Route path="/admin/customers/" element={<AdminCust />} />
         <Route path="/admin/customers/:custId" element={<AdminCustEdit />} />
         <Route path="/admin/customers/:custId/cart" element={<AdminCustCart />} />
