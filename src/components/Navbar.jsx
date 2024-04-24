@@ -55,7 +55,6 @@ export default function Navibar({isLoggedIn}) {
                     </Nav.Item>
                     <NavDropdown.Item href="/mycart">My Cart</NavDropdown.Item>
                     <NavDropdown.Item href="#cart">My Account</NavDropdown.Item>
-                    <NavDropdown.Item href="/myorders">My Orders</NavDropdown.Item>
                     <NavDropdown.Divider />
                     {
                         userAccess.isAdmin ? <AdminNavs />
@@ -91,7 +90,7 @@ export default function Navibar({isLoggedIn}) {
     }
 
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
             <Container>
                 <Navbar.Brand href="/">Planters Store</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -113,4 +112,3 @@ export default function Navibar({isLoggedIn}) {
 
     )
 }
-
