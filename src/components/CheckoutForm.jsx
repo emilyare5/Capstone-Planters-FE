@@ -10,13 +10,14 @@ import { CheckoutCart } from '../API';
 function CheckoutForm() {
     const navigate = useNavigate();
 
-    const handleOnClick = () => {
+    const handleOnClick = (event) => {
+      event.preventDefault()
       CheckoutCart();
       navigate('/completedorder');
     };
     
   return (
-    <Form>
+    <Form >
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridName">
           <Form.Label>Name</Form.Label>

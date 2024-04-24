@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const APIURL = process.env.APIURL || 'http://localhost:3000/api';
-import { AddCartItem, getSingleInventory } from '../API';
+import { updateCartItem, getSingleInventory } from '../API';
 import Form from 'react-bootstrap/Form';
 // import CheckoutForm from "./CheckoutForm";
 import Button from 'react-bootstrap/Button';
@@ -44,7 +44,8 @@ export default function Cart({ token }) {
         } catch (err) {
             console.error(err);
         }
-
+    }
+    
     useEffect(() => {
 
         getCartItems();
@@ -52,14 +53,8 @@ export default function Cart({ token }) {
 
     const removeItem = async (itemId) => {
         try {
-
-            const response = await AddCartItem(itemId, "0");
-            console.log(response);
+            // const response = await AddCartItem(itemId, "0");
             const response = await updateCartItem(itemId,  "0");
-            
-            console.log(response)
-
-
             if (response) {
                 // Refetch cart items after successful removal
                 getCartItems();
@@ -73,7 +68,7 @@ export default function Cart({ token }) {
 
     const updateQuantity = async (itemId, newQuantity) => {
         try {
-            const response = await AddCartItem(itemId, newQuantity);
+            const response = await updateCartItem(itemId, newQuantity);
             console.log(response);
 
             if (response) {
@@ -138,5 +133,4 @@ export default function Cart({ token }) {
             )}
         </>
     );
-    
 }

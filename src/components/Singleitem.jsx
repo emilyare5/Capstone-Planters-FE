@@ -6,21 +6,15 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-export default function Singleitem({ SetNewItemtoCart }) {
-
+export default function Singleitem() {
     const imgAddr = '../src/assets/assets2/'
-
     const cookies = new Cookies();
-
     const [singleData, setSingleData] = useState(null);
     let { itemId } = useParams();
-
     const [quantity, setQuantity] = useState(1);
-
     const [showAlert, setShowAlert] = useState(false);
-
     const [addedToCartt, setAddedToCartt] = useState(false);
-
+    
     const [userAccess, setUserAccess] = useState({
         custId: "",
         username: "",
@@ -66,7 +60,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
         try {
 
             const Add = await updateCartItem(id, quantity);
-            SetNewItemtoCart(Add);
+            // SetNewItemtoCart(Add);
             setShowAlert(true);
             setAddedToCartt(true);
            
@@ -93,27 +87,30 @@ export default function Singleitem({ SetNewItemtoCart }) {
 
     }, [showAlert]);
 
+    async function getQuantity() {
+        let arrayCart = []
+        const itemData = await getCartItems();
+        console.log(itemData)
+        if (Object.keys(itemData).length > 0){
+            arrayCart = itemData.cart.items;
+        }
+
+       
+        if (arrayCart && singleData){
+            arrayCart.find(item => {
+                if(item.id == singleData.id){
+                    const quantityNum = item.quantity;
+                    setCurrently(quantityNum);
+                    setQuantity(quantityNum)
+                }
+            });
+        }
+
+    }
 
     useEffect(() => {
+        // let arrayCart = []
 
-        async function getQuantity() {
-
-            const itemData = await getCartItems();
-
-            const arrayCart = itemData.cart.items;
-
-           
-            if (arrayCart && singleData){
-                arrayCart.find(item => {
-                    if(item.id == singleData.id){
-                        const quantityNum = item.quantity;
-                        setCurrently(quantityNum);
-                        setQuantity(quantityNum)
-                    }
-                });
-            }
-
-        }
 
         getQuantity()
 
@@ -155,7 +152,7 @@ export default function Singleitem({ SetNewItemtoCart }) {
                         <div>
                             {cookies.get("isLoggedIn") && (
                                 currently === 0 ? (
-                                    <Button onClick={() => addToCart(singleData.id, 1)} variant="outline-primary">Add to Cart</Button>
+                                    <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary">Add to Cart</Button>
                                 ) : (
                                     <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary">Update Cart</Button>
                                 )
