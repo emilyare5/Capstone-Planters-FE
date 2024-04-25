@@ -59,7 +59,7 @@ export default function AdminCustCart() {
             <br />
             {custCart ? (
                 <div >
-                    <div className='admin'>
+                    <div className='admin3'>
                     <h3>Cart ID: {custCart.id}</h3>
                     </div >
                         <Table striped bordered hover className="smallTables">
@@ -87,7 +87,7 @@ export default function AdminCustCart() {
                                 </tr>
                             </tbody>
                         </Table>
-                        <div className='admin'>
+                        <div className='admin3'>
                         <h3>Items in Cart</h3>
                         </div>
 

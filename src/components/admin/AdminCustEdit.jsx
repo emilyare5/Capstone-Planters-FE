@@ -144,7 +144,7 @@ export default function AdminCustEdit() {
     function CustDetailsTable({ cust }) {
         return (
             <div>
-                <div className='admin'>
+                <div className='admin2'>
                 <h3>CustomerID: {cust.id}</h3>
                  </div>
                 <div key={cust.id}>
@@ -193,7 +193,7 @@ export default function AdminCustEdit() {
     function AdrressDetailsTable({ cust }) {
         return (
             <div>
-                <div className='admin'>
+                <div className='admin2'>
                 <h3>Address ID: {cust.id}</h3>
                 </div>
                 {cust.address ? (
