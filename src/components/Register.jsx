@@ -69,7 +69,7 @@ export default function Register() {
 
 
     return (
-        <div className="forms" >
+        <div className="registerform">
             <h2>Register Here!</h2>
             <Form onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId="regFirst">

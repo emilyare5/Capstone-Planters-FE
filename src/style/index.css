@@ -231,6 +231,25 @@ body {
   justify-content: center;
 }
 
+.registerform{
+  border: solid rgb(211, 8, 167) 5px;
+  background-color:  rgba(34, 247, 155, 0.888);
+  margin: 20px;
+  padding: 50px;
+  color: rgb(115, 6, 127);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  justify-content: center;
+}
+.logform{
+  border: solid rgb(211, 8, 167) 5px;
+  background-color:  rgba(34, 247, 155, 0.888);
+  margin: 20px;
+  padding: 50px;
+  color: rgb(115, 6, 127);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  justify-content: center;
+}
+
 .order{
   margin: 40px;
   padding: 15px;
