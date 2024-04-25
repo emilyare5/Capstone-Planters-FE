@@ -305,3 +305,18 @@ export async function getCartItems(){
     }
 };
 
+export async function destroyInventory(id) {
+    console.log(id)
+    try {
+        const response = await fetch(APIURL + '/inventory/'+id, {
+            method: "DELETE",
+            credentials: 'include'
+        })
+
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error);
+
+    }
+}

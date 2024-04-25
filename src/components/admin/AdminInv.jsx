@@ -16,7 +16,7 @@ export default function Inventory() {
     const navigate = useNavigate();
     const [inventory, setInventory] = useState(null);
     const [types, setTypes] = useState([{ id: 1, type: "all" }]);
-    const [typeId, setTypeId] = useState("")
+    const [typeId, setTypeId] = useState(1)
     const [name, setName] = useState("")
     const [desc, setDesc] = useState("")
     const [price, setPrice] = useState("")
@@ -116,7 +116,7 @@ export default function Inventory() {
                             <Form onSubmit={handleSubmitAddInv} >
                                 <Form.Group className="mb-3" controlId="regType">
                                     {types &&
-                                        <Form.Select aria-label="Select Item Type">
+                                        <Form.Select aria-label="Select Item Type" onChange={e => setTypeId(e.target.value)}>
                                             {
                                                 types.map(type => {
                                                     return (
@@ -191,56 +191,3 @@ export default function Inventory() {
     )
 
 }
-
-
-
-
-{/* <form id="addItemForm" onSubmit={handleSubmitAddInv}>
-<div>
-    <h2>Add Item to Inventory</h2>
-    <div className='formFields'>
-        {types &&
-        
-            <div key={types[0].id}>
-                <label>Type:</label>
-                <select name="types" id="types" value={typeId} onChange={(event) => setTypeId(event.target.value)}>
-                    <option value="" defaultValue></option>
-                    {
-                        types.map(type => {
-                            return (
-                                <option key={type.id} value={type.id}>{type.type}</option>
-                            )
-                        })}
-                </select>
-            </div>
-        }
-    </div>
-    <br></br>
-    <div className='formFields'>
-        <label>Name:</label>
-        <input value={name} onChange={(event) => setName(event.target.value)}></input>
-    </div>
-    <br></br>
-    <div className='formFields'>
-        <label>Item Description:</label>
-        <input value={desc} onChange={(event) => setDesc(event.target.value)}></input>
-    </div>
-    <br></br>
-    <div className='formFields'>
-        <label>Price: $</label>
-        <input value={price} onChange={(event) => setPrice(event.target.value)}></input>
-    </div>
-    <br></br>
-    <div className='formFields'>
-        <label>Quantity In Stock:</label>
-        <input value={quantity} onChange={(event) => setQuantity(event.target.value)}></input>
-    </div>
-    <br></br>
-    <div className='formFields'>
-        <label>Image Address:</label>
-        <input value={imgUrl} onChange={(event) => setImgUrl(event.target.value)}></input>
-    </div>
-    <br></br>
-    <button>Submit</button>
-</div>
-</form> */}
