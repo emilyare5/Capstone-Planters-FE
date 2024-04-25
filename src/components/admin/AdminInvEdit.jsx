@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import Accordion from 'react-bootstrap/Accordion';
-import { getAllInvTypes, getSingleInventory, updateInventoryItem, getUserAccess } from '../../API';
+import { getAllInvTypes, getSingleInventory, updateInventoryItem, getUserAccess, destroyInventory } from '../../API';
 import Cookies from 'universal-cookie';
 
 export default function AdminInvEdit() {
@@ -101,14 +101,19 @@ export default function AdminInvEdit() {
 
     }
 
+    async function deleteInv(id) {
+        const delResponse = await destroyInventory(id)
+        alert("Deleted Item: " +delResponse.name)
+        navigate("/admin/inventory/")
+    }
 
-        function getTypeName(id) {
-            if (types) {
-                const typeName = types.filter((i) => i.id == id)
-                return typeName[0]
-            } else { return { type: "unknown" } }
+    function getTypeName(id) {
+        if (types) {
+            const typeName = types.filter((i) => i.id == id)
+            return typeName[0]
+        } else { return { type: "unknown" } }
 
-        }
+    }
 
 
     return (
@@ -121,50 +126,50 @@ export default function AdminInvEdit() {
             {inv ? <h2>Item Details for - {inv.name}</h2> : <h2>Item Details for ... </h2>}
             <br />
             <br />
-            <div style={{width: "50%"}}>
+            <div style={{ width: "50%" }}>
                 <Accordion >
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Edit Item</Accordion.Header>
-                            <Accordion.Body>
-                                <Form onSubmit={handleSubmitEditInv} >
-                                    <Form.Group className="mb-3" controlId="regType">
-                                        {types &&
-                                            <Form.Select  value={typeId} onChange={e => setTypeId(e.target.value)} aria-label="Select Item Type">
-                                                {
-                                                    types.map(type => {
-                                                        return (
-                                                            <option key={type.id} value={type.id} onChange={e => setTypeId(e.target.value)} >{type.type}</option>
-                                                        )
-                                                    })
-                                                }
-                                            </Form.Select>
-                                        }
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" controlId="regName">
-                                        <Form.Control size="sm" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter Item Name" />
-                                        {/* <Form.Text className="text-muted">Item Name</Form.Text> */}
-                                    </Form.Group>
-                                    <Form.Group size="sm" className="mb-3" controlId="regDesc">
-                                        <Form.Control as="textarea" rows="4" value={desc} onChange={e => setDesc(e.target.value)} placeholder="Enter Description" />
-                                        {/* <Form.Text className="text-muted">Item Description</Form.Text> */}
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" controlId="regPrice">
-                                        <Form.Control size="sm" type="text" value={price} onChange={e => setPrice(e.target.value)} placeholder="Enter Price $$" />
-                                        {/* <Form.Text className="text-muted">Price</Form.Text> */}
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" controlId="regQua">
-                                        <Form.Control size="sm" type="text" value={quantity} onChange={e => setQuantity(e.target.value)} placeholder="Enter Quantity" />
-                                        {/* <Form.Text className="text-muted">Quantity In Stock</Form.Text> */}
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" controlId="regImg">
-                                        <Form.Control size="sm" type="text" value={imgUrl} onChange={e => setImgUrl(e.target.value)} placeholder="Enter Img Address" />
-                                        {/* <Form.Text className="text-muted">Image Address</Form.Text> */}
-                                    </Form.Group>
-                                    <Button variant="primary" type="submit">
-                                        Submit
-                                    </Button>
-                                </Form>
-                            </Accordion.Body>
+                        <Accordion.Body>
+                            <Form onSubmit={handleSubmitEditInv} >
+                                <Form.Group className="mb-3" controlId="regType">
+                                    {types &&
+                                        <Form.Select value={typeId} onChange={e => setTypeId(e.target.value)} aria-label="Select Item Type">
+                                            {
+                                                types.map(type => {
+                                                    return (
+                                                        <option key={type.id} value={type.id}>{type.type}</option>
+                                                    )
+                                                })
+                                            }
+                                        </Form.Select>
+                                    }
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="regName">
+                                    <Form.Control size="sm" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter Item Name" />
+                                    {/* <Form.Text className="text-muted">Item Name</Form.Text> */}
+                                </Form.Group>
+                                <Form.Group size="sm" className="mb-3" controlId="regDesc">
+                                    <Form.Control as="textarea" rows="4" value={desc} onChange={e => setDesc(e.target.value)} placeholder="Enter Description" />
+                                    {/* <Form.Text className="text-muted">Item Description</Form.Text> */}
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="regPrice">
+                                    <Form.Control size="sm" type="text" value={price} onChange={e => setPrice(e.target.value)} placeholder="Enter Price $$" />
+                                    {/* <Form.Text className="text-muted">Price</Form.Text> */}
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="regQua">
+                                    <Form.Control size="sm" type="text" value={quantity} onChange={e => setQuantity(e.target.value)} placeholder="Enter Quantity" />
+                                    {/* <Form.Text className="text-muted">Quantity In Stock</Form.Text> */}
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="regImg">
+                                    <Form.Control size="sm" type="text" value={imgUrl} onChange={e => setImgUrl(e.target.value)} placeholder="Enter Img Address" />
+                                    {/* <Form.Text className="text-muted">Image Address</Form.Text> */}
+                                </Form.Group>
+                                <Button variant="primary" type="submit">
+                                    Submit
+                                </Button>
+                            </Form>
+                        </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
             </div>
@@ -204,7 +209,7 @@ export default function AdminInvEdit() {
                                 </tr>
 
                                 <tr>
-                                    <td><Button variant="danger" size="sm" onClick={() => alert("Functionality not created yet!")}>Remove From Inventory</Button></td>
+                                    <td><Button variant="danger" size="sm" onClick={() => deleteInv(inv.id)}>Remove From Inventory</Button></td>
                                 </tr>
                             </tbody>
                         </Table>
