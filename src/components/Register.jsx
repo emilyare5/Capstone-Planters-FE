@@ -122,7 +122,7 @@ export default function Register() {
                     {/* <Form.Text className="text-muted">Zip Code</Form.Text> */}
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Sign Up for Emaail Alerts" />
+                    <Form.Check type="checkbox" label="Sign Up for Email Alerts" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit

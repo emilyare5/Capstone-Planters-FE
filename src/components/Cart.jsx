@@ -130,7 +130,9 @@ export default function Cart({ token }) {
                     </div>
                 </>
             ) : (
+                <div className="nocart">
                 <p>No items in the cart</p>
+                </div>
             )}
         </>
     );

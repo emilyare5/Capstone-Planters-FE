@@ -120,12 +120,12 @@ export default function AdminInvEdit() {
         <div>
             <br />
             <br />
-            <div className='admin'>
+            <div className='admin2'>
             <h2>Edit Item</h2>
             </div>
             <br />
             <br />
-            <div className='admin'>
+            <div className='admin2'>
             {inv ? <h2>Item Details for - {inv.name}</h2> : <h2>Item Details for ... </h2>}
             </div>
             <br />
@@ -179,7 +179,9 @@ export default function AdminInvEdit() {
             </div>
             {inv ? (
                 <div>
+                    <div className='admin2'>
                     <h3>Inventory ID: {inv.id}</h3>
+                    </div>
                     <div key={inv.id}>
                         <Table striped bordered hover className="smallTables" >
                             <tbody>

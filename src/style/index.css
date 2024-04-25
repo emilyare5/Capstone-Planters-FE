@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url(../src/assets/stone-bloom-blossom-af1e4c-1024.jpg);
+  /* background-image: url(../src/assets/stone-bloom-blossom-af1e4c-1024.jpg); */
+  background-image: url(https://cdn.pixabay.com/photo/2012/03/03/23/55/stone-21675_1280.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -259,6 +260,17 @@ body {
   color:  rgb(75, 13, 132);
 }
 
+.nocart{
+  display: flex;
+  margin: 40px;
+  padding: 15px;
+  background-color: rgba(196, 240, 35, 0.788);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  justify-content: center;
+  color:  rgb(75, 13, 132);
+}
+
 .SearchContainer{
   display: flex;
   flex-direction: row;
@@ -297,4 +309,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   padding: 10px;
+}
+
+.admin2{
+  background-color: white;
+  color: rgb(41, 26, 245);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  padding: 10px;
+margin: 10px;
+}
+
+.admin3{
+  background-color: white;
+  color: rgb(41, 26, 245);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  padding: 10px;
+  width: 285px;
+/* margin: 10px; */
 }
