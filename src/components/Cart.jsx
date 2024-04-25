@@ -88,7 +88,7 @@ export default function Cart({ token }) {
 
     return (
         <>
-            {cartItems ? (
+            {cartItems && cartItems.items && cartItems.items.length > 0 ? (
                 <>
                  <div className='container2'>
                 <div className="gridcontainer2">
