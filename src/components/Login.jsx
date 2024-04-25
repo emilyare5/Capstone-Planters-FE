@@ -43,7 +43,7 @@ export default function Login({isLoggedIn, setIsLoggedIn}) {
         }
     }
     return (
-        <div className="forms" >
+        <div className="logform" >
             <h2>Please Login</h2>
             <br />
             <Form onSubmit={handleSubmit} >

@@ -120,10 +120,14 @@ export default function AdminInvEdit() {
         <div>
             <br />
             <br />
+            <div className='admin'>
             <h2>Edit Item</h2>
+            </div>
             <br />
             <br />
+            <div className='admin'>
             {inv ? <h2>Item Details for - {inv.name}</h2> : <h2>Item Details for ... </h2>}
+            </div>
             <br />
             <br />
             <div style={{ width: "50%" }}>

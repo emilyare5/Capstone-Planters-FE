@@ -90,8 +90,10 @@ export default function Cart({ token }) {
         <>
             {cartItems ? (
                 <>
+                 <div className='container2'>
+                <div className="gridcontainer2">
                 <div id="cartPage">
-                    <div id="cartPage_myCart">
+                    <div id="cartPage_myCart" className="cartcard">
                     {cartItems.items.map(item => (
                         <div key={item.id}>
                             <p>{item.name}</p>
@@ -102,12 +104,12 @@ export default function Cart({ token }) {
                                 value={item.quantity}
                                 onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
                             />
-                            <Button variant="outline-danger" size="md"  onClick={() => removeItem(item.id)}>Remove</Button>
+                            <Button className="cartdelbutt" variant="outline-danger" size="md"  onClick={() => removeItem(item.id)}>Remove</Button>
                             
                         </div>
                     ))}               
                     </div>
-                        <div id="cartPage_FormC">
+                        <div id="cartPage_FormC" className="cartbar">
                         <div id="cartPage_Form">
                             <div id="cartPage_Form1">
                                 <h2>Order Details</h2>
@@ -123,8 +125,9 @@ export default function Cart({ token }) {
                             </div>
                         </div>
                         </div>
+                        </div>
                     </div>
-                
+                    </div>
                 </>
             ) : (
                 <p>No items in the cart</p>

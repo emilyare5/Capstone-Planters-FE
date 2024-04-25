@@ -17,7 +17,7 @@ function CheckoutForm() {
     };
     
   return (
-    <Form >
+    <Form className='checkform'>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridName">
           <Form.Label>Name</Form.Label>
