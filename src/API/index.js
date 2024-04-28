@@ -1,70 +1,84 @@
 const APIURL = process.env.APIURL || 'http://localhost:3000/api'
 
-
-// get all inventory
+// Get all inventory
 export async function getAllInventory() {
+
     try {
-        const response = await fetch(APIURL + "/inventory",{
+        const response = await fetch(APIURL + "/inventory", {
             credentials: 'include'
-        })
-        const result = await response.json()
-        return result
+        });
+
+        const result = await response.json();
+        return result;
 
     } catch (error) {
-        console.error(error)
-    }
-}
+        console.error(error);
 
+    };
+};
+
+// Get all inventory type
 export async function getAllInvTypes() {
+
     try {
-        const response = await fetch(APIURL + "/inventory/types",{
+        const response = await fetch(APIURL + "/inventory/types", {
             credentials: 'include'
-        })
-        const result = await response.json()
-        return result
+        });
+
+        const result = await response.json();
+        return result;
 
     } catch (error) {
-        console.error(error)
-    }
-}
+        console.error(error);
 
+    };
+};
+
+// Get single inventory item
 export async function getSingleInventory(itemID) {
+
     try {
-        const response = await fetch(APIURL + "/inventory/" + itemID)
-        const result = await response.json()
-        return result
+        const response = await fetch(APIURL + "/inventory/" + itemID);
+        const result = await response.json();
+        return result;
 
     } catch (error) {
-        console.error(error)
-    }
-}
+        console.error(error);
+
+    };
+};
 
 
-// update the amount of item in user cart 
-export async function updateCartItem(itemID, quantity){
-    try{
+// Update the amount of item in user cart 
+export async function updateCartItem(itemID, quantity) {
+
+    try {
         const response = await fetch(APIURL + "/carts/mycart/update",
             {
                 credentials: 'include',
                 method: "PATCH",
-                headers:{
+                headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                     inventory_id: itemID,
-                     quantity: quantity,
+                    inventory_id: itemID,
+                    quantity: quantity,
                 })
 
-            })
-        const result = await response.json()
-        return result
+            });
 
-    }catch(error){
-        console.error(error)
-    }
-}
+        const result = await response.json();
+        return result;
 
+    } catch (error) {
+        console.error(error);
+
+    };
+};
+
+// Add inventory item
 export async function addInventoryItem(invObj) {
+
     try {
         const response = await fetch(APIURL + '/inventory', {
             method: "POST",
@@ -73,77 +87,95 @@ export async function addInventoryItem(invObj) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(invObj)
-        })
+        });
 
-        const result = await response.json()
-        return result
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
+// Update inventory item
 export async function updateInventoryItem(invObj, invId) {
+
     try {
-        const response = await fetch(APIURL + '/inventory/'+invId, {
+        const response = await fetch(APIURL + '/inventory/' + invId, {
             method: "PUT",
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(invObj)
-        })
+        });
 
-        const result = await response.json()
-        return result
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
+// Get all customers
 export async function getAllCustomers() {
+
     try {
         const response = await fetch(APIURL + "/customers", {
             credentials: 'include'
-        })
-        const result = await response.json()
-        return result
+        });
+
+        const result = await response.json();
+        return result;
 
     } catch (error) {
-        console.error(error)
-    }
-}
+        console.error(error);
 
+    };
+};
+
+// Get customer by id
 export async function getCustomerById(custId) {
+
     try {
-        const response = await fetch(APIURL + "/customers/"+custId, {
+        const response = await fetch(APIURL + "/customers/" + custId, {
             headers: {
                 credentials: 'include'
             }
-        })
-        const result = await response.json()
-        return result
+        });
+
+        const result = await response.json();
+        return result;
 
     } catch (error) {
-        console.error(error)
-    }
-}
+        console.error(error);
 
+    };
+};
+
+// Get cart by customer id
 export async function getCartByCustId(custId) {
+
     try {
-        const response = await fetch(APIURL + "/carts/customer/"+custId, {
+        const response = await fetch(APIURL + "/carts/customer/" + custId, {
             credentials: 'include',
-        })
-        const result = await response.json()
-        return result
+        });
+
+        const result = await response.json();
+        return result;
 
     } catch (error) {
-        console.error(error)
-    }
-}
+        console.error(error);
 
+    };
+};
+
+// Register new user
 export async function registerNewUser(customer, address) {
+
     try {
         const response = await fetch(APIURL + '/customers/register', {
             method: "POST",
@@ -166,62 +198,70 @@ export async function registerNewUser(customer, address) {
                     zip: address.zip,
                 }
             })
-        })
+        });
 
-        const result = await response.json()
-        return result
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
+// Update Customer
 export async function updateCustomer(customer, custId) {
-    console.log(customer)
+
     try {
-        const response = await fetch(APIURL + '/customers/'+custId, {
+        const response = await fetch(APIURL + '/customers/' + custId, {
             method: "PATCH",
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(customer)
-        })
+        });
 
-        const result = await response.json()
-        return result
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
+// Update address
 export async function updateAddress(address, custId) {
+
     try {
-        const response = await fetch(APIURL + '/customers/'+custId+'/address', {
+        const response = await fetch(APIURL + '/customers/' + custId + '/address', {
             method: "PATCH",
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                    street_number: address.street_number,
-                    street: address.street,
-                    city: address.city,
-                    state: address.state,
-                    zip: address.zip,
+                street_number: address.street_number,
+                street: address.street,
+                city: address.city,
+                state: address.state,
+                zip: address.zip,
             })
-        })
+        });
 
-        const result = await response.json()
-        return result
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
+// Login
 export async function loginCustomer(loginObj) {
+
     try {
         const response = await fetch(APIURL + '/customers/login', {
             method: "POST",
@@ -233,90 +273,100 @@ export async function loginCustomer(loginObj) {
                 password: loginObj.password
             }),
             credentials: 'include'
-        })
+        });
 
-        const result = await response.json()
-        return result
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
+// logout
 export async function logoutCustomer() {
+
     try {
         const response = await fetch(APIURL + '/customers/logout', {
             method: "POST",
             credentials: 'include'
-        })
-        // console.log(response)
-        const result = await response.json()
-        return result
+        });
+       
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
+// Get user access
 export async function getUserAccess() {
+    
     try {
-        const response = await fetch(APIURL + "/auth",{
+        const response = await fetch(APIURL + "/auth", {
             credentials: 'include'
-        })
-        const result = await response.json()
-        return result
+        });
+
+        const result = await response.json();
+        return result;
 
     } catch (error) {
-        console.error(error)
-    }
-}
+        console.error(error);
 
+    };
+};
 
-
+// Checkout cart
 export const CheckoutCart = async () => {
+
     try {
         const response = await fetch(APIURL + "/carts/mycart/checkout", {
             method: "PATCH",
             credentials: 'include',
         });
+
         const result = await response.json();
-        console.log(result)
-        // setCartItems(result.cart);
+         
     } catch (err) {
         console.error(err);
-    }
-};
-          
-// Get cart products
-export async function getCartItems(){
-    try {
-        const response = await fetch(APIURL+ "/carts/mycart/", {
 
+    };
+};
+
+// Get cart products
+export async function getCartItems() {
+
+    try {
+        const response = await fetch(APIURL + "/carts/mycart/", {
             credentials: 'include',
         });
 
         const result = await response.json();
-
-        console.log(result)
-        return result
-        // setCartItems(result.cart);
+        return result;
+        
     } catch (err) {
         console.error(err);
-    }
+
+    };
 };
 
+// Delete inventory by id
 export async function destroyInventory(id) {
-    console.log(id)
+
     try {
-        const response = await fetch(APIURL + '/inventory/'+id, {
+        const response = await fetch(APIURL + '/inventory/' + id, {
             method: "DELETE",
             credentials: 'include'
-        })
+        });
 
-        const result = await response.json()
-        return result
+        const result = await response.json();
+        return result;
+
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
