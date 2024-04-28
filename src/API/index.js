@@ -12,8 +12,9 @@ export async function getAllInventory() {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 // Get all inventory type
 export async function getAllInvTypes() {
@@ -27,8 +28,9 @@ export async function getAllInvTypes() {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 // Get single inventory item
 export async function getSingleInventory(itemID) {
@@ -39,8 +41,9 @@ export async function getSingleInventory(itemID) {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 
 // Update the amount of item in user cart 
@@ -65,8 +68,9 @@ export async function updateCartItem(itemID, quantity) {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 // Add inventory item
 export async function addInventoryItem(invObj) {
@@ -86,8 +90,8 @@ export async function addInventoryItem(invObj) {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
 // Update inventory item
 export async function updateInventoryItem(invObj, invId) {
@@ -107,8 +111,8 @@ export async function updateInventoryItem(invObj, invId) {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
 // Get all customers
 export async function getAllCustomers() {
@@ -122,8 +126,9 @@ export async function getAllCustomers() {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 // Get customer by id
 export async function getCustomerById(custId) {
@@ -139,8 +144,9 @@ export async function getCustomerById(custId) {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 // Get cart by customer id
 export async function getCartByCustId(custId) {
@@ -154,8 +160,9 @@ export async function getCartByCustId(custId) {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 // Register new user
 export async function registerNewUser(customer, address) {
@@ -189,8 +196,8 @@ export async function registerNewUser(customer, address) {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
 // Update Customer
 export async function updateCustomer(customer, custId) {
@@ -210,8 +217,8 @@ export async function updateCustomer(customer, custId) {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
 // Update address
 export async function updateAddress(address, custId) {
@@ -237,8 +244,8 @@ export async function updateAddress(address, custId) {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
 // Login
 export async function loginCustomer(loginObj) {
@@ -261,8 +268,8 @@ export async function loginCustomer(loginObj) {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
 // logout
 export async function logoutCustomer() {
@@ -278,8 +285,8 @@ export async function logoutCustomer() {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
 
 // Get user access
 export async function getUserAccess() {
@@ -293,8 +300,9 @@ export async function getUserAccess() {
 
     } catch (error) {
         console.error(error);
-    }
-}
+
+    };
+};
 
 // Checkout cart
 export const CheckoutCart = async () => {
@@ -308,8 +316,9 @@ export const CheckoutCart = async () => {
          
     } catch (err) {
         console.error(err);
-    }
-}
+
+    };
+};
 
 // Get cart products
 export async function getCartItems() {
@@ -323,8 +332,9 @@ export async function getCartItems() {
         
     } catch (err) {
         console.error(err);
-    }
-}
+        
+    };
+};
 
 // Delete inventory by id
 export async function destroyInventory(id) {
@@ -340,5 +350,5 @@ export async function destroyInventory(id) {
     } catch (error) {
         console.error(error);
 
-    }
-}
+    };
+};
