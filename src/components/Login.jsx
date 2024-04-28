@@ -12,7 +12,6 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
     const cookies = new Cookies();
     const [userName, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [tok, setTok] = useState(null);
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState("false");
 
@@ -56,7 +55,6 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
                 <Form.Group className="mb-3" controlId="regUser">
 
                     <Form.Control type="username" value={userName} onChange={e => setUsername(e.target.value)} placeholder="Enter User Name"/>;
-
                     <Form.Text className="text-muted">User Name</Form.Text>;
 
                 </Form.Group>;
@@ -66,11 +64,11 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
                     <div className="pwField">
 
                         <Form.Control type={showPassword ? "password" : "text"} value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter Password" />;
-
+                        
                         <Button onClick={() => setShowPassword(!showPassword)}>
 
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
-                            
+
                         </Button>;
 
                     </div>

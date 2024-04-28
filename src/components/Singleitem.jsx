@@ -142,11 +142,8 @@ export default function Singleitem() {
                     <div>
 
                         <h2>{singleData.name}</h2>
-
                         <p>${(singleData.price / 100).toFixed(2)}</p>
-
                         <img src={singleData.imgurl} alt={singleData.name} />
-
                         <p>Description: {singleData.description}</p>
 
                         <div className='quantityF'>
@@ -158,6 +155,7 @@ export default function Singleitem() {
                                     <div>
 
                                         <Form.Control type="number" value={quantity} onChange={handleQuantityChange} min="1" />
+                                        
                                     </div>
 
                                 )}

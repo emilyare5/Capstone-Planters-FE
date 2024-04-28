@@ -87,7 +87,6 @@ export default function Inventory() {
                     <Form>
 
                         <Form.Text className="text-muted">Filter by Category</Form.Text>
-
                         <Form.Group className="mb-3" controlId="regType">
 
                             {types &&
@@ -138,9 +137,7 @@ export default function Inventory() {
                             <div>
 
                                 <Link to={`/single/${item.id}`}> {item.name} </Link>
-
                                 <p>Price: {(item.price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
-
                                 <img src={item.imgurl} alt={item.name} />
 
                             </div>

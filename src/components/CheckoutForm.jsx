@@ -12,9 +12,7 @@ function CheckoutForm() {
   const handleOnClick = (event) => {
 
     event.preventDefault();
-
     CheckoutCart();
-
     navigate('/completedorder');
 
   };
@@ -28,7 +26,6 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridName">
 
           <Form.Label>Name</Form.Label>
-
           <Form.Control type="name" placeholder="Enter First and Last name" />
 
         </Form.Group>
@@ -38,7 +35,6 @@ function CheckoutForm() {
       <Form.Group className="mb-3" controlId="formGridAddress1">
 
         <Form.Label>Shipping Address</Form.Label>
-
         <Form.Control placeholder="1234 Main St" />
 
       </Form.Group>
@@ -46,7 +42,6 @@ function CheckoutForm() {
       <Form.Group className="mb-3" controlId="formGridAddress2">
 
         <Form.Label>Address Line 2</Form.Label>
-
         <Form.Control placeholder="Apartment, studio, or floor" />
 
       </Form.Group>
@@ -56,7 +51,6 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridCity">
 
           <Form.Label>City</Form.Label>
-
           <Form.Control />
 
         </Form.Group>
@@ -64,9 +58,7 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridState">
 
           <Form.Label>State</Form.Label>
-
           <Form.Select defaultValue="Choose...">
-
             <option>Choose...</option>
             <option>Alabama</option>
             <option>Alaska</option>
@@ -118,7 +110,6 @@ function CheckoutForm() {
             <option>West Virginia</option>
             <option>Wisconsin</option>
             <option>Wyoming</option>
-
           </Form.Select>
 
         </Form.Group>
@@ -126,7 +117,6 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridZip">
 
           <Form.Label>Zip</Form.Label>
-
           <Form.Control />
 
         </Form.Group>
@@ -144,7 +134,6 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridName">
 
           <Form.Label>Name on Card</Form.Label>
-
           <Form.Control type="name" placeholder="Enter First and Last name" />
 
         </Form.Group>
@@ -156,7 +145,6 @@ function CheckoutForm() {
         <Form.Group className="mb-3" controlId="formGridAddress1">
 
           <Form.Label>Billing Address</Form.Label>
-
           <Form.Control placeholder="1234 Main St" />
 
         </Form.Group>
@@ -164,7 +152,6 @@ function CheckoutForm() {
         <Form.Group className="mb-3" controlId="formGridAddress2">
 
           <Form.Label>Address Line 2</Form.Label>
-
           <Form.Control placeholder="Apartment, studio, or floor" />
 
         </Form.Group>
@@ -174,7 +161,6 @@ function CheckoutForm() {
           <Form.Group as={Col} controlId="formGridCity">
 
             <Form.Label>City</Form.Label>
-
             <Form.Control />
 
           </Form.Group>
@@ -182,7 +168,6 @@ function CheckoutForm() {
           <Form.Group as={Col} controlId="formGridState">
 
             <Form.Label>State</Form.Label>
-
             <Form.Select defaultValue="Choose...">
               <option>Choose...</option>
               <option>Alabama</option>
@@ -235,7 +220,6 @@ function CheckoutForm() {
               <option>West Virginia</option>
               <option>Wisconsin</option>
               <option>Wyoming</option>
-
             </Form.Select>
 
           </Form.Group>
@@ -243,7 +227,6 @@ function CheckoutForm() {
           <Form.Group as={Col} controlId="formGridZip">
 
             <Form.Label>Zip</Form.Label>
-
             <Form.Control />
 
           </Form.Group>
@@ -255,7 +238,6 @@ function CheckoutForm() {
       <Form.Group className="mb-3" controlId="formGridCardNum">
 
         <Form.Label>Card Number</Form.Label>
-
         <Form.Control placeholder="1234 5678 9101 1121" />
 
       </Form.Group>
@@ -265,7 +247,6 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridSecurityCode">
 
           <Form.Label>Security Code</Form.Label>
-
           <Form.Control placeholder="123" />
 
         </Form.Group>
@@ -273,7 +254,6 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridExpiration">
 
           <Form.Label>Expiration Date</Form.Label>
-
           <Form.Control placeholder="MM/YY" />
 
         </Form.Group>
@@ -281,7 +261,6 @@ function CheckoutForm() {
         <Form.Group as={Col} controlId="formGridZip">
 
           <Form.Label>Zip</Form.Label>
-
           <Form.Control />
 
         </Form.Group>
@@ -292,7 +271,7 @@ function CheckoutForm() {
       <Button variant="success" type="submit" onClick={handleOnClick}>
         Submit Order
       </Button>
-      
+
     </Form>
 
   );

@@ -7,55 +7,79 @@ import Cookies from 'universal-cookie';
 import { getUserAccess } from '../../API';
 
 export default function AdminCust() {
+
     const cookies = new Cookies();
     const navigate = useNavigate();
     const [customers, setCustomers] = useState(null);
-    const [renderFlag, setRenderFlag] = useState("")
+
     const [userAccess, setUserAccess] = useState({
         custId: "",
         username: "",
         role: "",
-        isAdmin: ""});
+        isAdmin: ""
+    });
 
     useEffect(() => {
+
         async function getUserAuth() {
-            const user = await getUserAccess()
+
+            const user = await getUserAccess();
+
             setUserAccess({
-            custId: user.custId,
-            username: user.username,
-            role: user.role,
-            isAdmin: user.isAdmin})
-        }
-        getUserAuth()
-    }, [])
-    useEffect(() => { 
-        if (cookies.get("isLoggedIn") == false ||cookies.get("isLoggedIn")==null)   { navigate("/login") }
-        if (userAccess.role && userAccess.role != "admin") { navigate("/login") }
-    }, [])
+                custId: user.custId,
+                username: user.username,
+                role: user.role,
+                isAdmin: user.isAdmin
+            });
+
+        };
+
+        getUserAuth();
+
+    }, []);
 
     useEffect(() => {
+
+        if (cookies.get("isLoggedIn") == false || cookies.get("isLoggedIn") == null) { navigate("/login") }
+        if (userAccess.role && userAccess.role != "admin") { navigate("/login") }
+
+    }, []);
+
+    useEffect(() => {
+
         async function getCustomers() {
 
-            const customers = await getAllCustomers()
-            setCustomers(customers)
-        }
+            const customers = await getAllCustomers();
+            setCustomers(customers);
+        };
 
-        getCustomers()
-    }, [])
+        getCustomers();
+
+    }, []);
 
 
     return (
+
         <div className='container'>
+
             <br />
             <br />
-            <div className='admin'> 
-            <h2>View and Update Customer Data</h2>
+
+            <div className='admin'>
+
+                <h2>View and Update Customer Data</h2>
+
             </div>
+
             <br />
             <br />
+
             <Table striped bordered hover className="tables">
+
                 <tbody>
+
                     <tr>
+
                         <th style={{ width: '2%' }}>ID</th>
                         <th>User Name</th>
                         <th>Email</th>
@@ -65,11 +89,15 @@ export default function AdminCust() {
                         <th>Role</th>
                         <th style={{ width: '5%' }}></th>
                         <th style={{ width: '5%' }}></th>
+
                     </tr>
+
                     {customers &&
                         customers.customers.map(cust => {
                             return (
+
                                 <tr key={cust.id}>
+
                                     <td>{cust.id}</td>
                                     <td>{cust.username}</td>
                                     <td>{cust.email}</td>
@@ -77,14 +105,21 @@ export default function AdminCust() {
                                     <td>{cust.lastname}</td>
                                     <td>{cust.phone_number}</td>
                                     <td>{cust.role}</td>
+
                                     <td><Button variant="outline-info" size="sm"><Link to={`/admin/customers/${cust.id}`}>Edit</Link></Button></td>
                                     <td><Button variant="outline-info" size="sm"><Link to={`/admin/customers/${cust.id}/cart`}>Cart</Link></Button></td>
-                                </tr>
-                            )
-                        })}
-                </tbody>
-            </Table >
-        </div>
-    )
 
-}
+                                </tr>
+
+                            );
+
+                        })};
+
+                </tbody>
+
+            </Table >
+
+        </div>
+    );
+
+};

@@ -13,7 +13,6 @@ function SelectDelivery() {
             <Form.Select size="lg">
 
                 <option>Delivery</option>
-
                 <option>Pick up</option>
 
             </Form.Select>
@@ -106,11 +105,8 @@ export default function Cart({ token }) {
 
                                     {cartItems.items.map(item => (
                                         <div key={item.id}>
-
                                             <p>{item.name}</p>
-
                                             <img src={item.imgurl} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
-
                                             <p>{item.quantity}</p>
 
                                             <input
@@ -134,9 +130,7 @@ export default function Cart({ token }) {
                                         <div id="cartPage_Form1">
 
                                             <h2>Order Details</h2>
-
                                             <p>Total: {(cartItems.total_price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
-
                                             <SelectDelivery />
 
                                         </div>
@@ -148,7 +142,6 @@ export default function Cart({ token }) {
                                             <div className="d-grid gap-2">
 
                                                 <Button variant="primary" type="submit" onClick={handleOnClick}>Go to Checkout</Button>
-
                                                 <Button variant="primary" type="submit">Continue Shopping</Button>
 
                                             </div>
