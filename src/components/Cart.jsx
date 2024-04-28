@@ -6,11 +6,16 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
 
 function SelectDelivery() {
+
     return (
+
         <>
             <Form.Select size="lg">
+
                 <option>Delivery</option>
+
                 <option>Pick up</option>
+
             </Form.Select>
         </>
     );
@@ -18,16 +23,19 @@ function SelectDelivery() {
 
 
 export default function Cart({ token }) {
+
     const [cartItems, setCartItems] = useState(null);
 
     const navigate = useNavigate();
 
     const handleOnClick = () => {
+
         navigate('/checkout');
 
     };
 
     const getCartItems = async () => {
+
         try {
             const response = await fetch(APIURL + "/carts/mycart/", {
                 credentials: 'include',
@@ -49,6 +57,7 @@ export default function Cart({ token }) {
     }, [token]);
 
     const removeItem = async (itemId) => {
+
         try {
             const response = await updateCartItem(itemId, "0");
 
@@ -56,15 +65,16 @@ export default function Cart({ token }) {
                 getCartItems();
             } else {
                 console.error("Failed to remove item from cart");
-            }
+            };
 
         } catch (err) {
             console.error(err);
 
-        }
+        };
     };
 
     const updateQuantity = async (itemId, newQuantity) => {
+
         try {
             const response = await updateCartItem(itemId, newQuantity);
            
@@ -81,53 +91,88 @@ export default function Cart({ token }) {
     };
 
     return (
+
         <>
             {cartItems && cartItems.items && cartItems.items.length > 0 ? (
                 <>
+
                     <div className='container2'>
+
                         <div className="gridcontainer2">
+
                             <div id="cartPage">
+
                                 <div id="cartPage_myCart" className="cartcard">
+
                                     {cartItems.items.map(item => (
                                         <div key={item.id}>
+
                                             <p>{item.name}</p>
+
                                             <img src={item.imgurl} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
+
                                             <p>{item.quantity}</p>
+
                                             <input
                                                 type="number"
                                                 value={item.quantity}
                                                 onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
                                             />
+
                                             <Button className="cartdelbutt" variant="outline-danger" size="md" onClick={() => removeItem(item.id)}>Remove</Button>
 
                                         </div>
+
                                     ))}
+
                                 </div>
+
                                 <div id="cartPage_FormC" className="cartbar">
+
                                     <div id="cartPage_Form">
+
                                         <div id="cartPage_Form1">
+
                                             <h2>Order Details</h2>
+
                                             <p>Total: {(cartItems.total_price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
+
                                             <SelectDelivery />
+
                                         </div>
+
                                         <div id="cartPage_Form2"></div>
+
                                         <div id="cartPage_Form3">
+
                                             <div className="d-grid gap-2">
+
                                                 <Button variant="primary" type="submit" onClick={handleOnClick}>Go to Checkout</Button>
+
                                                 <Button variant="primary" type="submit">Continue Shopping</Button>
+
                                             </div>
+
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
                 </>
+
             ) : (
                 <div className="nocart">
+
                     <p>No items in the cart</p>
+
                 </div>
-            )}
+            )};
         </>
     );
 };

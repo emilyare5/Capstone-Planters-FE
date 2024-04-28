@@ -23,18 +23,18 @@ export default function Navibar({ isLoggedIn }) {
 
         async function getUserAuth() {
 
-            const user = await getUserAccess()
+            const user = await getUserAccess();
 
             setUserAccess({
                 custId: user.custId,
                 username: user.username,
                 role: user.role,
                 isAdmin: user.isAdmin
-            })
+            });
 
         };
 
-        getUserAuth()
+        getUserAuth();
 
     }, [isLoggedIn]);
 
@@ -64,7 +64,9 @@ export default function Navibar({ isLoggedIn }) {
                 <NavDropdown title={userAccess.username} id="basic-nav-dropdown">
 
                     <Nav.Item>
+                        
                         <Button onClick={logOut} variant="secondary" size="sm">Log Out</Button>
+
                     </Nav.Item>
 
                     <NavDropdown.Item href="/mycart">My Cart</NavDropdown.Item>
@@ -76,7 +78,7 @@ export default function Navibar({ isLoggedIn }) {
                     {
                         userAccess.isAdmin ? <AdminNavs />
                             : null
-                    }
+                    };
 
                 </NavDropdown>
             </>
@@ -88,12 +90,16 @@ export default function Navibar({ isLoggedIn }) {
         return (
             <>
                 <Nav.Item>
+
                     <Nav.Link href="/login">Login</Nav.Link>
                 </Nav.Item>
 
 
+
                 <Nav.Item>
+
                     <Nav.Link href="/register">Register Now</Nav.Link>
+
                 </Nav.Item>
 
             </>
@@ -101,29 +107,39 @@ export default function Navibar({ isLoggedIn }) {
     };
 
     function AdminNavs() {
+
         return (
+
             <>
                 <NavDropdown.Divider />
+
                 <NavDropdown.Item href="/admin/customers">ADMIN - All Customers</NavDropdown.Item>
+
                 <NavDropdown.Item href="/admin/inventory">ADMIN - All Inventory</NavDropdown.Item>
+
                 <NavDropdown.Divider />
             </>
         );
     };
 
     return (
+
         <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
 
             <Container>
+
                 <Navbar.Brand href="/">Planters Store</Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                 <Navbar.Collapse id="basic-navbar-nav">
+
                     <Nav className="me-auto">
 
                         <Nav.Item>
+
                             <Nav.Link href="/">Shop Now</Nav.Link>
+
                         </Nav.Item>
 
                         {
@@ -132,7 +148,9 @@ export default function Navibar({ isLoggedIn }) {
                         }
 
                     </Nav>
+
                 </Navbar.Collapse>
+
             </Container>
 
         </Navbar>

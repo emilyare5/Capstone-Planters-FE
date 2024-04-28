@@ -38,12 +38,12 @@ export default function Navigations({ name, token, role, setUser }) {
                     {
                         token ? <button onClick={logOut}>Log Out</button>
                             : <button><Link to="/login">Login</Link></button>
-                    }
+                    };
 
                     {
                         token ? null
                             : <button><Link to="/register">Register New User</Link></button>
-                    }
+                    };
 
                     <button onClick={handleClick}><Link to="/">Home (All Posts)</Link></button>
 

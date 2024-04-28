@@ -79,28 +79,39 @@ export default function Register() {
             <Form onSubmit={handleSubmit} >
 
                 <Form.Group className="mb-3" controlId="regFirst">
+
                     <Form.Control size="sm" type="name" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="Enter First Name" />
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regLast">
+
                     <Form.Control size="sm" type="name" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Enter Last Name" />
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regUser">
-                    <Form.Control size="sm" type="username" value={userName} onChange={e => setUserName(e.target.value)} placeholder="Enter User Name" />                  
+
+                    <Form.Control size="sm" type="username" value={userName} onChange={e => setUserName(e.target.value)} placeholder="Enter User Name" />   
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regEmail">
-                    <Form.Control size="sm" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email Address" />                   
+
+                    <Form.Control size="sm" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email Address" />     
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regPass">
 
                     <div className="pwField">
+
                         <Form.Control size="sm" type={showPassword ? "password" : "text"} value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter Password" />
 
                         <Button onClick={() => setShowPassword(!showPassword)}>
+
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
+
                         </Button>
 
                     </div> 
@@ -108,41 +119,57 @@ export default function Register() {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regPhone">
+
                     <Form.Control size="sm" type="number" value={phone_number} onChange={e => setPhoneNumber(e.target.value)} placeholder="Enter Phone Number" />
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regSteetNum">
-                    <Form.Control size="sm" type="name" value={streetNumber} onChange={e => setStreetNumber(e.target.value)} placeholder="Street Number" />                 
+
+                    <Form.Control size="sm" type="name" value={streetNumber} onChange={e => setStreetNumber(e.target.value)} placeholder="Street Number" />    
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regStreet">
-                    <Form.Control size="sm" type="name" value={street} onChange={e => setStreet(e.target.value)} placeholder="Enter Street Name" />                    
+
+                    <Form.Control size="sm" type="name" value={street} onChange={e => setStreet(e.target.value)} placeholder="Enter Street Name" />    
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regCity">
-                    <Form.Control size="sm" type="username" value={city} onChange={e => setCity(e.target.value)} placeholder="Enter City" />                   
-                </Form.Group>
+
+                    <Form.Control size="sm" type="username" value={city} onChange={e => setCity(e.target.value)} placeholder="Enter City" />  
+
+                </Form.Group>                
 
                 <Form.Group className="mb-3" controlId="regState">
-                    <Form.Control size="sm" value={state} onChange={e => setState(e.target.value)} placeholder="Enter State" />                   
+
+                    <Form.Control size="sm" value={state} onChange={e => setState(e.target.value)} placeholder="Enter State" />  
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regZip">
-                    <Form.Control size="sm" type="text" value={zip} onChange={e => setZip(e.target.value)} placeholder="Enter Zip" />                  
+
+                    <Form.Control size="sm" type="text" value={zip} onChange={e => setZip(e.target.value)} placeholder="Enter Zip" />   
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
+
                     <Form.Check type="checkbox" label="Sign Up for Email Alerts" />
+
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-                
+
             </Form>
+
         </div >
+
     );
-}
+};
 
 
 

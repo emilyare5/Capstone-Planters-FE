@@ -60,6 +60,7 @@ export default function Singleitem() {
         try {
 
             const Add = await updateCartItem(id, quantity);
+
             setShowAlert(true);
             setAddedToCartt(true);
 
@@ -69,7 +70,9 @@ export default function Singleitem() {
     };
 
     const handleQuantityChange = (event) => {
+
         setQuantity(event.target.value);
+
     };
 
     useEffect(() => {
@@ -88,7 +91,8 @@ export default function Singleitem() {
 
     async function getQuantity() {
 
-        let arrayCart = []
+        let arrayCart = [];
+
         const itemData = await getCartItems();
 
         if (Object.keys(itemData).length > 0) {
@@ -103,6 +107,7 @@ export default function Singleitem() {
                 if (item.id == singleData.id) {
 
                     const quantityNum = item.quantity;
+
                     setCurrently(quantityNum);
                     setQuantity(quantityNum);
 
@@ -125,36 +130,52 @@ export default function Singleitem() {
         <div className='container'>
 
             <div className='title'>
+
                 <h1>Buy Now</h1>
+
             </div>
 
             <div className='itemcard'>
+
                 {singleData ? (
+
                     <div>
 
                         <h2>{singleData.name}</h2>
+
                         <p>${(singleData.price / 100).toFixed(2)}</p>
+
                         <img src={singleData.imgurl} alt={singleData.name} />
+
                         <p>Description: {singleData.description}</p>
 
                         <div className='quantityF'>
 
                             <div>
+
                                 {cookies.get("isLoggedIn") && !addedToCartt && (
+
                                     <div>
+
                                         <Form.Control type="number" value={quantity} onChange={handleQuantityChange} min="1" />
                                     </div>
+
                                 )}
+
                             </div>
 
                         </div>
 
                         <div>
+
                             {showAlert && <div> <p>Updated Cart!</p></div>}
+
                         </div>
 
                         <div>
+
                             {cookies.get("isLoggedIn") && (
+
                                 currently === 0 ? (
                                     <Button onClick={() => addToCart(singleData.id, quantity)} variant="outline-primary">Add to Cart</Button>
                                 ) : (
@@ -165,21 +186,33 @@ export default function Singleitem() {
                         </div>
 
                         {cookies.get("isLoggedIn") && !addedToCartt && (
+
                             <p>Currently in Cart: {currently}</p>
+
                         )}
 
                         {cookies.get("isLoggedIn") && (
+
                             <div className='buttBox'>
+
                                 <div>
+
                                     <Link className="addToCartLinkButt" to={"/mycart"}> Go to Cart</Link>
+
                                 </div>
+
                                 <div>
+
                                     <Link className="contiuneShoppingButt" to={"/"}>Keep Shopping</Link>
+
                                 </div>
+
                             </div>
 
                         )}
+
                     </div>
+
                 ) : (
                     <p>Loading...</p>
                 )}
@@ -188,5 +221,5 @@ export default function Singleitem() {
 
         </div>
 
-    )
-}
+    );
+};

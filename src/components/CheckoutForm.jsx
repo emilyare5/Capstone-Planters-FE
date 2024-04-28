@@ -10,41 +10,63 @@ function CheckoutForm() {
   const navigate = useNavigate();
 
   const handleOnClick = (event) => {
-    event.preventDefault()
+
+    event.preventDefault();
+
     CheckoutCart();
+
     navigate('/completedorder');
 
   };
 
   return (
+
     <Form className='checkform'>
 
       <Row className="mb-3">
+
         <Form.Group as={Col} controlId="formGridName">
+
           <Form.Label>Name</Form.Label>
+
           <Form.Control type="name" placeholder="Enter First and Last name" />
+
         </Form.Group>
+
       </Row>
       
       <Form.Group className="mb-3" controlId="formGridAddress1">
+
         <Form.Label>Shipping Address</Form.Label>
+
         <Form.Control placeholder="1234 Main St" />
+
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formGridAddress2">
+
         <Form.Label>Address Line 2</Form.Label>
+
         <Form.Control placeholder="Apartment, studio, or floor" />
+
       </Form.Group>
 
       <Row className="mb-3">
+
         <Form.Group as={Col} controlId="formGridCity">
+
           <Form.Label>City</Form.Label>
+
           <Form.Control />
+
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridState">
+
           <Form.Label>State</Form.Label>
+
           <Form.Select defaultValue="Choose...">
+
             <option>Choose...</option>
             <option>Alabama</option>
             <option>Alaska</option>
@@ -98,43 +120,69 @@ function CheckoutForm() {
             <option>Wyoming</option>
 
           </Form.Select>
+
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
+
           <Form.Label>Zip</Form.Label>
+
           <Form.Control />
+
         </Form.Group>
+
       </Row>
 
       <Form.Group className="mb-3" id="formGridCheckbox">
+
         <Form.Check type="checkbox" label="Billing Address same as Shipping" />
+
       </Form.Group>
 
       <Row className="mb-3">
+
         <Form.Group as={Col} controlId="formGridName">
+
           <Form.Label>Name on Card</Form.Label>
+
           <Form.Control type="name" placeholder="Enter First and Last name" />
+
         </Form.Group>
+
       </Row>
+
       <Row>
+
         <Form.Group className="mb-3" controlId="formGridAddress1">
+
           <Form.Label>Billing Address</Form.Label>
+
           <Form.Control placeholder="1234 Main St" />
+
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGridAddress2">
+
           <Form.Label>Address Line 2</Form.Label>
+
           <Form.Control placeholder="Apartment, studio, or floor" />
+
         </Form.Group>
 
         <Row className="mb-3">
+
           <Form.Group as={Col} controlId="formGridCity">
+
             <Form.Label>City</Form.Label>
+
             <Form.Control />
+
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
+
             <Form.Label>State</Form.Label>
+
             <Form.Select defaultValue="Choose...">
               <option>Choose...</option>
               <option>Alabama</option>
@@ -189,42 +237,64 @@ function CheckoutForm() {
               <option>Wyoming</option>
 
             </Form.Select>
+
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">
+
             <Form.Label>Zip</Form.Label>
+
             <Form.Control />
+
           </Form.Group>
+
         </Row>
+
       </Row>
 
       <Form.Group className="mb-3" controlId="formGridCardNum">
+
         <Form.Label>Card Number</Form.Label>
+
         <Form.Control placeholder="1234 5678 9101 1121" />
+
       </Form.Group>
 
       <Row className="mb-3">
+
         <Form.Group as={Col} controlId="formGridSecurityCode">
+
           <Form.Label>Security Code</Form.Label>
+
           <Form.Control placeholder="123" />
+
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridExpiration">
+
           <Form.Label>Expiration Date</Form.Label>
+
           <Form.Control placeholder="MM/YY" />
+
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridZip">
+
           <Form.Label>Zip</Form.Label>
+
           <Form.Control />
+
         </Form.Group>
+
       </Row>
 
 
       <Button variant="success" type="submit" onClick={handleOnClick}>
         Submit Order
       </Button>
+      
     </Form>
+
   );
 };
 

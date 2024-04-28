@@ -22,6 +22,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
+    
     <div>
 
       <Navibar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />;

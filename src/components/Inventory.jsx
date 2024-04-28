@@ -89,28 +89,40 @@ export default function Inventory() {
                         <Form.Text className="text-muted">Filter by Category</Form.Text>
 
                         <Form.Group className="mb-3" controlId="regType">
+
                             {types &&
                                 <Form.Select value={type} onChange={e => setType(e.target.value)} aria-label="Select Item Type">
+
                                     <option key={"all"} value={"all"} onChange={e => type(e.target.value)} >all</option>
+
                                     {
                                         types.map(type => {
                                             return (
                                                 <option key={type.id} value={type.id} onChange={e => type(e.target.value)} >{type.type}</option>
                                             )
+
                                         })
+
                                     }
+
                                 </Form.Select>
+
                             }
+
                         </Form.Group>
 
                         <div id="searchBarDivider"></div>
 
                         <Form.Group className="mb-3" controlId="regName">
+
                             <Form.Control size="sm" type="text" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder="Search By Name" />
+
                         </Form.Group>
 
                         <div className="d-grid gap-2">
+
                             <Button onClick={clearFunction} variant="outline-info" type="submit">Clear</Button>
+
                         </div>
 
                     </Form>
@@ -120,16 +132,22 @@ export default function Inventory() {
                 <div className='gridContainer'>
 
                     {showInventory && showInventory.map(item => {
+
                         return <div className='productCard' key={item.id}>
 
                             <div>
+
                                 <Link to={`/single/${item.id}`}> {item.name} </Link>
+
                                 <p>Price: {(item.price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
+
                                 <img src={item.imgurl} alt={item.name} />
+
                             </div>
 
                         </div>
-                    })}
+
+                    })};
 
                 </div>
 

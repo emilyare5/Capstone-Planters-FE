@@ -25,6 +25,7 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
     }, [isLoggedIn]);
 
     async function handleSubmit(event) {
+
         event.preventDefault();
 
         const loginObj = {};
@@ -43,6 +44,7 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
     };
 
     return (
+
         <div className="logform" >
 
             <h2>Please Login</h2>
@@ -54,7 +56,7 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
                 <Form.Group className="mb-3" controlId="regUser">
 
                     <Form.Control type="username" value={userName} onChange={e => setUsername(e.target.value)} placeholder="Enter User Name"/>;
-                    
+
                     <Form.Text className="text-muted">User Name</Form.Text>;
 
                 </Form.Group>;
@@ -66,7 +68,9 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
                         <Form.Control type={showPassword ? "password" : "text"} value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter Password" />;
 
                         <Button onClick={() => setShowPassword(!showPassword)}>
+
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            
                         </Button>;
 
                     </div>
