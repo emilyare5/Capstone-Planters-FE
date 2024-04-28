@@ -2,6 +2,7 @@ const APIURL = process.env.APIURL || 'http://localhost:3000/api'
 
 // Get all inventory
 export async function getAllInventory() {
+
     try {
         const response = await fetch(APIURL + "/inventory", {
             credentials: 'include'
@@ -18,6 +19,7 @@ export async function getAllInventory() {
 
 // Get all inventory type
 export async function getAllInvTypes() {
+
     try {
         const response = await fetch(APIURL + "/inventory/types", {
             credentials: 'include'
@@ -34,6 +36,7 @@ export async function getAllInvTypes() {
 
 // Get single inventory item
 export async function getSingleInventory(itemID) {
+
     try {
         const response = await fetch(APIURL + "/inventory/" + itemID);
         const result = await response.json();
@@ -48,6 +51,7 @@ export async function getSingleInventory(itemID) {
 
 // Update the amount of item in user cart 
 export async function updateCartItem(itemID, quantity) {
+
     try {
         const response = await fetch(APIURL + "/carts/mycart/update",
             {
@@ -74,6 +78,7 @@ export async function updateCartItem(itemID, quantity) {
 
 // Add inventory item
 export async function addInventoryItem(invObj) {
+
     try {
         const response = await fetch(APIURL + '/inventory', {
             method: "POST",
@@ -95,6 +100,7 @@ export async function addInventoryItem(invObj) {
 
 // Update inventory item
 export async function updateInventoryItem(invObj, invId) {
+
     try {
         const response = await fetch(APIURL + '/inventory/' + invId, {
             method: "PUT",
@@ -116,6 +122,7 @@ export async function updateInventoryItem(invObj, invId) {
 
 // Get all customers
 export async function getAllCustomers() {
+
     try {
         const response = await fetch(APIURL + "/customers", {
             credentials: 'include'
@@ -132,6 +139,7 @@ export async function getAllCustomers() {
 
 // Get customer by id
 export async function getCustomerById(custId) {
+
     try {
         const response = await fetch(APIURL + "/customers/" + custId, {
             headers: {
@@ -150,6 +158,7 @@ export async function getCustomerById(custId) {
 
 // Get cart by customer id
 export async function getCartByCustId(custId) {
+
     try {
         const response = await fetch(APIURL + "/carts/customer/" + custId, {
             credentials: 'include',
@@ -166,6 +175,7 @@ export async function getCartByCustId(custId) {
 
 // Register new user
 export async function registerNewUser(customer, address) {
+
     try {
         const response = await fetch(APIURL + '/customers/register', {
             method: "POST",
@@ -201,6 +211,7 @@ export async function registerNewUser(customer, address) {
 
 // Update Customer
 export async function updateCustomer(customer, custId) {
+
     try {
         const response = await fetch(APIURL + '/customers/' + custId, {
             method: "PATCH",
@@ -222,6 +233,7 @@ export async function updateCustomer(customer, custId) {
 
 // Update address
 export async function updateAddress(address, custId) {
+
     try {
         const response = await fetch(APIURL + '/customers/' + custId + '/address', {
             method: "PATCH",
@@ -249,6 +261,7 @@ export async function updateAddress(address, custId) {
 
 // Login
 export async function loginCustomer(loginObj) {
+
     try {
         const response = await fetch(APIURL + '/customers/login', {
             method: "POST",
@@ -273,6 +286,7 @@ export async function loginCustomer(loginObj) {
 
 // logout
 export async function logoutCustomer() {
+
     try {
         const response = await fetch(APIURL + '/customers/logout', {
             method: "POST",
@@ -290,6 +304,7 @@ export async function logoutCustomer() {
 
 // Get user access
 export async function getUserAccess() {
+    
     try {
         const response = await fetch(APIURL + "/auth", {
             credentials: 'include'
@@ -306,6 +321,7 @@ export async function getUserAccess() {
 
 // Checkout cart
 export const CheckoutCart = async () => {
+
     try {
         const response = await fetch(APIURL + "/carts/mycart/checkout", {
             method: "PATCH",
@@ -322,6 +338,7 @@ export const CheckoutCart = async () => {
 
 // Get cart products
 export async function getCartItems() {
+
     try {
         const response = await fetch(APIURL + "/carts/mycart/", {
             credentials: 'include',
@@ -332,12 +349,13 @@ export async function getCartItems() {
         
     } catch (err) {
         console.error(err);
-        
+
     };
 };
 
 // Delete inventory by id
 export async function destroyInventory(id) {
+
     try {
         const response = await fetch(APIURL + '/inventory/' + id, {
             method: "DELETE",
