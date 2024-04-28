@@ -18,13 +18,14 @@ function CheckoutForm() {
 
   return (
     <Form className='checkform'>
+
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridName">
           <Form.Label>Name</Form.Label>
           <Form.Control type="name" placeholder="Enter First and Last name" />
         </Form.Group>
       </Row>
-
+      
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Shipping Address</Form.Label>
         <Form.Control placeholder="1234 Main St" />
