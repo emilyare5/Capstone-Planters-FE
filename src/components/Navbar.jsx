@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button';
 import Cookies from 'universal-cookie';
-import { logoutCustomer, getUserAccess } from '../API';
+import { getUserAccess } from '../API';
 
 export default function Navibar({ isLoggedIn }) {
 
@@ -39,11 +39,9 @@ export default function Navibar({ isLoggedIn }) {
     }, [isLoggedIn]);
 
     async function logOut() {
-
-        logoutCustomer();
+        cookies.remove("jwtCust", false);
         cookies.remove("isLoggedIn", false);
         window.location.reload();
-
     };
 
 

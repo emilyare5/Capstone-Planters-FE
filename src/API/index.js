@@ -286,24 +286,6 @@ export async function loginCustomer(loginObj) {
     };
 };
 
-// logout
-export async function logoutCustomer() {
-
-    try {
-        const response = await fetch(APIURL + '/customers/logout', {
-            method: "POST",
-            credentials: 'include'
-        });
-       
-        const result = await response.json();
-        return result;
-
-    } catch (error) {
-        console.error(error);
-
-    };
-};
-
 // Get user access
 export async function getUserAccess() {
     
