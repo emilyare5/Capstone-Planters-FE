@@ -4,6 +4,7 @@ import { updateCartItem } from '../API';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
+import Cookies from 'universal-cookie';
 
 function SelectDelivery() {
 
@@ -22,15 +23,11 @@ function SelectDelivery() {
 
 
 export default function Cart({ token }) {
-
+    const cookies = new Cookies();
     const [cartItems, setCartItems] = useState(null);
-
     const navigate = useNavigate();
-
     const handleOnClick = () => {
-
         navigate('/checkout');
-
     };
 
     const getCartItems = async () => {
@@ -53,9 +50,7 @@ export default function Cart({ token }) {
     };
 
     useEffect(() => {
-
         getCartItems();
-
     }, [token]);
 
     const removeItem = async (itemId) => {
