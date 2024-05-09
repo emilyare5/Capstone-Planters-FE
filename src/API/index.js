@@ -1,9 +1,11 @@
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 const APIURL = import.meta.env.VITE_APIENDPOINT
-let token = localStorage.getItem('jwtCust')
-let config_content ={}
-let config_noContent ={}
+let token = cookies.get("jwtCust")
+let config_content = {}
+let config_noContent = {}
 
-if (token){
+if (token) {
     config_content = {
         'Content-Type': 'application/json',
         'x-jwtCust': token
@@ -14,7 +16,7 @@ if (token){
     }
 }
 
-if (token){
+if (token) {
     config_noContent = {
         'x-jwtCust': token
     }
@@ -289,7 +291,27 @@ export async function loginCustomer(loginObj) {
 
 // Get user access
 export async function getUserAccess() {
-    
+    let token = cookies.get("jwtCust")
+    let config_content = {}
+    let config_noContent = {}
+
+    if (token) {
+        config_content = {
+            'Content-Type': 'application/json',
+            'x-jwtCust': token
+        }
+    } else {
+        config_content = {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    if (token) {
+        config_noContent = {
+            'x-jwtCust': token
+        }
+    }
+
     try {
         const response = await fetch(APIURL + '/auth', {
             headers: config_noContent
@@ -314,7 +336,7 @@ export const CheckoutCart = async () => {
         });
 
         const result = await response.json();
-         
+
     } catch (err) {
         console.error(err);
 
@@ -331,7 +353,7 @@ export async function getCartItems() {
 
         const result = await response.json();
         return result;
-        
+
     } catch (err) {
         console.error(err);
 

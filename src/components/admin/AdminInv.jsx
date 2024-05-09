@@ -205,36 +205,28 @@ export default function Inventory() {
             <Table striped bordered hover className="smallTables" >
 
                 <tbody>
-
                     <tr>
-
                         <th style={{ width: '10%' }}></th>
                         <th style={{ width: '10%' }}>ID</th>
                         <th style={{ width: '10%' }}>Type ID</th>
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Quantity In Stock</th>
-
                     </tr>
-
                     {inventory &&
                         inventory.map(inv => {
                             return (
-
                                 <tr key={inv.id}>
-                                    <td><Button variant="outline-info" size="sm" ><Link to={`/admin/inventory/${inv.id}`}>Edit Item</Link></Button></td>
+                                    <td><Button variant="outline-info" size="sm"><Link to={`/admin/inventory/${inv.id}`}>Edit Item</Link></Button></td>
                                     <td>{inv.id}</td>
                                     <td>{inv.type_id}</td>
                                     <td>{inv.name}</td>
-                                    <td>{(inv.price / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}</td>
+                                    <td>{(inv.price/100).toLocaleString("en-US",{style:"currency",currency:"USD"})}</td>
                                     <td>{inv.quantity}</td>
                                 </tr>
-
-                            );
-
-                        })};
+                            )
+                        })}
                 </tbody>
-
             </Table>
 
         </div>

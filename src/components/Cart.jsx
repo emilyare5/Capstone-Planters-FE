@@ -34,11 +34,7 @@ export default function Cart({ token }) {
     };
 
     const getCartItems = async () => {
-        let token = localStorage.getItem('jwtCust')
-        // if (localStorage.getItem('jwtCust')) {
-        //     token = localStorage.getItem('jwtCust')
-        // }
-
+        let token = cookies.get("jwtCust")
         try {
             const response = await fetch(APIURL + "/carts/mycart/", {
                 credentials: 'include',

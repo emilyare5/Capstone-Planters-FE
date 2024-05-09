@@ -59,27 +59,17 @@ export default function AdminCust() {
 
 
     return (
-
         <div className='container'>
-
             <br />
             <br />
-
             <div className='admin'>
-
                 <h2>View and Update Customer Data</h2>
-
             </div>
-
-            <br />
-            <br />
-
+            <br/>
+            <br/>
             <Table striped bordered hover className="tables">
-
                 <tbody>
-
                     <tr>
-
                         <th style={{ width: '2%' }}>ID</th>
                         <th>User Name</th>
                         <th>Email</th>
@@ -89,15 +79,11 @@ export default function AdminCust() {
                         <th>Role</th>
                         <th style={{ width: '5%' }}></th>
                         <th style={{ width: '5%' }}></th>
-
                     </tr>
-
                     {customers &&
-                        customers.customers.map(cust => {
-                            return (
-
+                        customers.customers.map(cust=>{
+                            return(
                                 <tr key={cust.id}>
-
                                     <td>{cust.id}</td>
                                     <td>{cust.username}</td>
                                     <td>{cust.email}</td>
@@ -105,20 +91,13 @@ export default function AdminCust() {
                                     <td>{cust.lastname}</td>
                                     <td>{cust.phone_number}</td>
                                     <td>{cust.role}</td>
-
                                     <td><Button variant="outline-info" size="sm"><Link to={`/admin/customers/${cust.id}`}>Edit</Link></Button></td>
                                     <td><Button variant="outline-info" size="sm"><Link to={`/admin/customers/${cust.id}/cart`}>Cart</Link></Button></td>
-
                                 </tr>
-
-                            );
-
-                        })};
-
+                            )
+                        })}
                 </tbody>
-
             </Table >
-
         </div>
     );
 

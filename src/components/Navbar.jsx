@@ -22,9 +22,7 @@ export default function Navibar({ isLoggedIn }) {
     useEffect(() => {
 
         async function getUserAuth() {
-
             const user = await getUserAccess();
-
             setUserAccess({
                 custId: user.custId,
                 username: user.username,
@@ -35,7 +33,6 @@ export default function Navibar({ isLoggedIn }) {
         };
 
         if (cookies.get("isLoggedIn")){
-            console.log(cookies.get("isLoggedIn"))
             getUserAuth();
         }
         
@@ -43,7 +40,7 @@ export default function Navibar({ isLoggedIn }) {
     }, [isLoggedIn]);
 
     async function logOut() {
-        localStorage.removeItem("jwtCust");
+        cookies.remove("jwtCust", false);
         cookies.remove("isLoggedIn", false);
         window.location.reload();
     };
