@@ -37,7 +37,9 @@ export default function Singleitem() {
             });
         };
 
-        getUserAuth();
+        if (cookies.get("isLoggedIn")){
+            getUserAuth();
+        }
 
     }, []);
 
@@ -120,7 +122,10 @@ export default function Singleitem() {
 
     useEffect(() => {
 
-        getQuantity();
+        if (cookies.get("isLoggedIn")){
+            getQuantity();
+        }
+        
 
     }, [addedToCartt, singleData]);
 

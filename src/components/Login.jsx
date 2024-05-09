@@ -36,6 +36,7 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
             if (loginResponse.name == "LoginError" || loginResponse.name == "UserNotFoundError") {
                 alert(loginResponse.message);
             } else if (loginResponse.name == "LoginSuccess") {
+                cookies.set('jwtCust', loginResponse.token);
                 cookies.set('isLoggedIn', true);
                 setIsLoggedIn(true);
             };
@@ -54,34 +55,34 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
 
                 <Form.Group className="mb-3" controlId="regUser">
 
-                    <Form.Control type="username" value={userName} onChange={e => setUsername(e.target.value)} placeholder="Enter User Name"/>;
-                    <Form.Text className="text-muted">User Name</Form.Text>;
+                    <Form.Control type="username" value={userName} onChange={e => setUsername(e.target.value)} placeholder="Enter User Name"/>
+                    <Form.Text className="text-muted">User Name</Form.Text>
 
-                </Form.Group>;
+                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="regPass">
 
                     <div className="pwField">
 
-                        <Form.Control type={showPassword ? "password" : "text"} value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter Password" />;
+                        <Form.Control type={showPassword ? "password" : "text"} value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter Password" />
                         
                         <Button onClick={() => setShowPassword(!showPassword)}>
 
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
 
-                        </Button>;
+                        </Button>
 
                     </div>
 
-                    <Form.Text className="text-muted">Password</Form.Text>;
+                    <Form.Text className="text-muted">Password</Form.Text>
 
-                </Form.Group>;
+                </Form.Group>
 
                 <Button variant="primary" type="submit">
                     Submit
-                </Button>;
+                </Button>
 
-            </Form>;
+            </Form>
 
         </div>
     );

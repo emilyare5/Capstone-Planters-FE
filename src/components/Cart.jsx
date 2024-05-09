@@ -34,10 +34,13 @@ export default function Cart({ token }) {
     };
 
     const getCartItems = async () => {
-
+        let token = cookies.get("jwtCust")
         try {
             const response = await fetch(APIURL + "/carts/mycart/", {
                 credentials: 'include',
+                headers: {
+                    'x-jwtCust': token
+                },
             });
 
             const result = await response.json();
