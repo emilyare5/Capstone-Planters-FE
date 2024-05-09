@@ -1,12 +1,30 @@
 const APIURL = import.meta.env.VITE_APIENDPOINT
+let token = localStorage.getItem('jwtCust')
+let config_content ={}
+let config_noContent ={}
 
+if (token){
+    config_content = {
+        'Content-Type': 'application/json',
+        'x-jwtCust': token
+    }
+} else {
+    config_content = {
+        'Content-Type': 'application/json'
+    }
+}
 
+if (token){
+    config_noContent = {
+        'x-jwtCust': token
+    }
+}
 
 // Get all inventory
 export async function getAllInventory() {
 
     try {
-        const response = await fetch(APIURL + "/inventory", {
+        const response = await fetch(APIURL + '/inventory', {
             credentials: 'include'
         });
 
@@ -23,7 +41,7 @@ export async function getAllInventory() {
 export async function getAllInvTypes() {
 
     try {
-        const response = await fetch(APIURL + "/inventory/types", {
+        const response = await fetch(APIURL + '/inventory/types', {
             credentials: 'include'
         });
 
@@ -40,7 +58,7 @@ export async function getAllInvTypes() {
 export async function getSingleInventory(itemID) {
 
     try {
-        const response = await fetch(APIURL + "/inventory/" + itemID);
+        const response = await fetch(APIURL + '/inventory/' + itemID);
         const result = await response.json();
         return result;
 
@@ -55,13 +73,10 @@ export async function getSingleInventory(itemID) {
 export async function updateCartItem(itemID, quantity) {
 
     try {
-        const response = await fetch(APIURL + "/carts/mycart/update",
+        const response = await fetch(APIURL + '/carts/mycart/update',
             {
-                credentials: 'include',
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                method: 'PATCH',
+                headers: config_content,
                 body: JSON.stringify({
                     inventory_id: itemID,
                     quantity: quantity,
@@ -83,11 +98,8 @@ export async function addInventoryItem(invObj) {
 
     try {
         const response = await fetch(APIURL + '/inventory', {
-            method: "POST",
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            method: 'POST',
+            headers: config_content,
             body: JSON.stringify(invObj)
         });
 
@@ -105,11 +117,8 @@ export async function updateInventoryItem(invObj, invId) {
 
     try {
         const response = await fetch(APIURL + '/inventory/' + invId, {
-            method: "PUT",
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            method: 'PUT',
+            headers: config_content,
             body: JSON.stringify(invObj)
         });
 
@@ -126,8 +135,8 @@ export async function updateInventoryItem(invObj, invId) {
 export async function getAllCustomers() {
 
     try {
-        const response = await fetch(APIURL + "/customers", {
-            credentials: 'include'
+        const response = await fetch(APIURL + '/customers', {
+            headers: config_noContent
         });
 
         const result = await response.json();
@@ -143,10 +152,8 @@ export async function getAllCustomers() {
 export async function getCustomerById(custId) {
 
     try {
-        const response = await fetch(APIURL + "/customers/" + custId, {
-            headers: {
-                credentials: 'include'
-            }
+        const response = await fetch(APIURL + '/customers/' + custId, {
+            headers: config_noContent
         });
 
         const result = await response.json();
@@ -162,8 +169,8 @@ export async function getCustomerById(custId) {
 export async function getCartByCustId(custId) {
 
     try {
-        const response = await fetch(APIURL + "/carts/customer/" + custId, {
-            credentials: 'include',
+        const response = await fetch(APIURL + '/carts/customer/' + custId, {
+            headers: config_noContent
         });
 
         const result = await response.json();
@@ -180,9 +187,9 @@ export async function registerNewUser(customer, address) {
 
     try {
         const response = await fetch(APIURL + '/customers/register', {
-            method: "POST",
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 username: customer.userName,
@@ -216,11 +223,8 @@ export async function updateCustomer(customer, custId) {
 
     try {
         const response = await fetch(APIURL + '/customers/' + custId, {
-            method: "PATCH",
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            method: 'PATCH',
+            headers: config_content,
             body: JSON.stringify(customer)
         });
 
@@ -238,11 +242,8 @@ export async function updateAddress(address, custId) {
 
     try {
         const response = await fetch(APIURL + '/customers/' + custId + '/address', {
-            method: "PATCH",
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            method: 'PATCH',
+            headers: config_content,
             body: JSON.stringify({
                 street_number: address.street_number,
                 street: address.street,
@@ -266,7 +267,7 @@ export async function loginCustomer(loginObj) {
 
     try {
         const response = await fetch(APIURL + '/customers/login', {
-            method: "POST",
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -290,8 +291,8 @@ export async function loginCustomer(loginObj) {
 export async function getUserAccess() {
     
     try {
-        const response = await fetch(APIURL + "/auth", {
-            credentials: 'include'
+        const response = await fetch(APIURL + '/auth', {
+            headers: config_noContent
         });
 
         const result = await response.json();
@@ -307,9 +308,9 @@ export async function getUserAccess() {
 export const CheckoutCart = async () => {
 
     try {
-        const response = await fetch(APIURL + "/carts/mycart/checkout", {
-            method: "PATCH",
-            credentials: 'include',
+        const response = await fetch(APIURL + '/carts/mycart/checkout', {
+            method: 'PATCH',
+            headers: config_noContent
         });
 
         const result = await response.json();
@@ -324,8 +325,8 @@ export const CheckoutCart = async () => {
 export async function getCartItems() {
 
     try {
-        const response = await fetch(APIURL + "/carts/mycart/", {
-            credentials: 'include',
+        const response = await fetch(APIURL + '/carts/mycart/', {
+            headers: config_noContent
         });
 
         const result = await response.json();
@@ -342,8 +343,8 @@ export async function destroyInventory(id) {
 
     try {
         const response = await fetch(APIURL + '/inventory/' + id, {
-            method: "DELETE",
-            credentials: 'include'
+            method: 'DELETE',
+            headers: config_noContent
         });
 
         const result = await response.json();

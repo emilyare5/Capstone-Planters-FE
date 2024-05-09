@@ -34,12 +34,16 @@ export default function Navibar({ isLoggedIn }) {
 
         };
 
-        getUserAuth();
+        if (cookies.get("isLoggedIn")){
+            console.log(cookies.get("isLoggedIn"))
+            getUserAuth();
+        }
+        
 
     }, [isLoggedIn]);
 
     async function logOut() {
-        cookies.remove("jwtCust", false);
+        localStorage.removeItem("jwtCust");
         cookies.remove("isLoggedIn", false);
         window.location.reload();
     };

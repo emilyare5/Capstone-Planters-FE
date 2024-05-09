@@ -36,6 +36,7 @@ export default function Login({ isLoggedIn, setIsLoggedIn }) {
             if (loginResponse.name == "LoginError" || loginResponse.name == "UserNotFoundError") {
                 alert(loginResponse.message);
             } else if (loginResponse.name == "LoginSuccess") {
+                localStorage.setItem('jwtCust', loginResponse.token)
                 cookies.set('isLoggedIn', true);
                 setIsLoggedIn(true);
             };
