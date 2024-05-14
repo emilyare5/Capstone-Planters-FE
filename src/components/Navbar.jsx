@@ -126,7 +126,7 @@ export default function Navibar({ isLoggedIn }) {
 
             <Container>
 
-                <Navbar.Brand href="/">Planters Store</Navbar.Brand>
+                <Navbar.Brand href="/">Planters Garden Center</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                 <Navbar.Collapse id="basic-navbar-nav">
