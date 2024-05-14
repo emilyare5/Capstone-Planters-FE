@@ -5,6 +5,15 @@ import Button from 'react-bootstrap/Button';
 import { getAllCustomers } from '../../API';
 import Cookies from 'universal-cookie';
 import { getUserAccess } from '../../API';
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+
+function Breadcrumbs() {
+    return (
+        <Breadcrumb>
+            <Breadcrumb.Item active>ADMIN - Customers</Breadcrumb.Item>
+        </Breadcrumb>
+    )
+}
 
 export default function AdminCust() {
 
@@ -63,6 +72,7 @@ export default function AdminCust() {
             <br />
             <br />
             <div className='admin'>
+                <Breadcrumbs/>
                 <h2>View and Update Customer Data</h2>
             </div>
             <br/>
@@ -99,6 +109,6 @@ export default function AdminCust() {
                 </tbody>
             </Table >
         </div>
-    );
+    )
 
-};
+}

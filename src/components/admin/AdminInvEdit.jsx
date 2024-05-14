@@ -7,6 +7,17 @@ import Table from 'react-bootstrap/Table';
 import Accordion from 'react-bootstrap/Accordion';
 import { getAllInvTypes, getSingleInventory, updateInventoryItem, getUserAccess, destroyInventory } from '../../API';
 import Cookies from 'universal-cookie';
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+
+function Breadcrumbs() {
+    return (
+        <Breadcrumb>
+            <Breadcrumb.Item href="/admin/inventory">ADMIN - Inventory</Breadcrumb.Item>
+            <Breadcrumb.Item active>Edit Inventory</Breadcrumb.Item>
+        </Breadcrumb>
+        
+    )
+}
 
 export default function AdminInvEdit() {
     
@@ -145,6 +156,7 @@ export default function AdminInvEdit() {
             <br />
 
             <div className='admin2'>
+                <Breadcrumbs/>
                 <h2>Edit Item</h2>
             </div>
 
@@ -180,9 +192,9 @@ export default function AdminInvEdit() {
                                                         <option key={type.id} value={type.id}>{type.type}</option>
                                                     )
                                                 })
-                                            };
+                                            }
                                         </Form.Select>
-                                    };
+                                    }
 
                                 </Form.Group>
 

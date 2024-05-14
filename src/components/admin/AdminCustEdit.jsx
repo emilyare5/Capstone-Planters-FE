@@ -8,6 +8,17 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { getCustomerById } from '../../API';
 import { updateCustomer, updateAddress, getUserAccess } from '../../API';
 import Cookies from 'universal-cookie';
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+
+function Breadcrumbs() {
+    return (
+        <Breadcrumb>
+            <Breadcrumb.Item href="/admin/customers">ADMIN - Customers</Breadcrumb.Item>
+            <Breadcrumb.Item active>Edit Customer</Breadcrumb.Item>
+        </Breadcrumb>
+        
+    )
+}
 
 export default function AdminCustEdit() {
 
@@ -313,7 +324,7 @@ export default function AdminCustEdit() {
             <br />
 
             <div className='admin'>
-
+                <Breadcrumbs/>
                 <h2>Customer Edit</h2>
 
             </div>

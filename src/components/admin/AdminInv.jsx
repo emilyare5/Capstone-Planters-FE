@@ -6,6 +6,16 @@ import Table from 'react-bootstrap/Table';
 import Accordion from 'react-bootstrap/Accordion';
 import { getAllInventory, getAllInvTypes, addInventoryItem, getUserAccess } from '../../API';
 import Cookies from 'universal-cookie';
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+
+function Breadcrumbs() {
+    return (
+        <Breadcrumb>
+            <Breadcrumb.Item active>ADMIN - Inventory</Breadcrumb.Item>
+        </Breadcrumb>
+        
+    )
+}
 
 export default function Inventory() {
 
@@ -125,6 +135,7 @@ export default function Inventory() {
             <br />
 
             <div className='admin'>
+                <Breadcrumbs/>
                 <h2>View and Update Inventory Data</h2>
             </div>
 
